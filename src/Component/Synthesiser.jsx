@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import keydown from 'react-keydown';
 import * as Tone from 'tone';
 import './Synthesiser.css';
 
-import { setBinding } from 'react-keydown/dist/event_handlers';
 class Synthesiser extends Component {
   constructor(){
     super()
