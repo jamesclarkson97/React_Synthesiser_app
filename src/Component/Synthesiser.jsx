@@ -7,9 +7,7 @@ class Synthesiser extends Component {
     super()
 
     this.state = {
-      synth1: new Tone.PolySynth(Tone.Synth).toDestination(),
-      now: Tone.now(),
-      event: false
+      synth1: new Tone.PolySynth(Tone.Synth).toDestination()
     }
   }
   
