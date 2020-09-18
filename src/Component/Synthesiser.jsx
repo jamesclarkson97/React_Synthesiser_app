@@ -8,7 +8,8 @@ class Synthesiser extends Component {
 
     this.state = {
       synth1: new Tone.PolySynth(Tone.Synth).toDestination(),
-      now: Tone.now()
+      now: Tone.now(),
+      event: false
     }
   }
   
@@ -26,48 +27,44 @@ class Synthesiser extends Component {
     }
 
     handleKeyDown = (e) => {
-      e = window.event
-      var k = e.keyCode;
+      e = window.event;
+      let k = e.keyCode;
 	    switch(k){
         case 74:
-          if (e.repeat != undefined) {
-            this.state.synth1.triggerRelease(k);
-          }
           Tone.start()
-          this.state.synth1.triggerAttack("B4")
+          this.state.synth1.triggerAttackRelease("B4", "8n")
           break;
           case 85:
           Tone.start()
-          this.state.synth1.triggerAttack("A#4")
+          this.state.synth1.triggerAttackRelease("A#4", "8n")
           break;
           case 72:
           Tone.start()
-          this.state.synth1.triggerAttack("A4")
-          break;
+          this.state.synth1.triggerAttackRelease("A4", "8n")
         break;
       }
     }
 
-    handleKeyUp = (e) => {
-      e = window.event;
-      var k = e.keyCode;
-	    switch(k){
-        case 74:
-          this.state.synth1.triggerRelease("B4")
-          break;
-          case 85:
-          this.state.synth1.triggerRelease("A#4")
-          break;
-          case 72:
-          this.state.synth1.triggerRelease("A4")
-          break;
-        break;
-      }
-    }
+    // handleKeyUp = (e) => {
+    //   e = window.event;
+    //   var k = e.keyCode;
+	  //   switch(k){
+    //     case 74:
+    //       this.state.synth1.triggerRelease("B4")
+    //       break;
+    //       case 85:
+    //       this.state.synth1.triggerRelease("A#4")
+    //       break;
+    //       case 72:
+    //       this.state.synth1.triggerRelease("A4")
+    //       break;
+    //     break;
+    //   }
+    // }
   
     
     handleOnLeave = (e) => {
-      this.state.synth1.triggerRelease(e.target.id)
+      this.state.synth1.triggerRelease(e.target.id);
     }
 
 
@@ -75,7 +72,7 @@ class Synthesiser extends Component {
   render() {
     
     return (
-      <div className="synthesiser-notes" onKeyDown={this.handleKeyDown} onKeyUp={this.handleKeyUp} tabIndex={0}>
+      <div className="synthesiser-notes" onKeyDown={this.handleKeyDown} onKeyUp={this.handleOnLeave} tabIndex="0">
         
         <div id="B4" onMouseDown={this.handleOnDown} onMouseUp={this.handleOnLeave} onMouseOut={this.handleOnLeave} className="white-note">B4
           <div  id="A#4" onMouseDown={this.handleOnDown} onMouseUp={this.handleOnLeave} onMouseOut={this.handleOnLeave}className="black-note">A#4</div>
