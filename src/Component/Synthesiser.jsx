@@ -23,7 +23,6 @@ class Synthesiser extends Component {
     handleOnDown = (e) => {
       Tone.start()
       this.state.synth1.triggerAttack(e.target.id , this.state.now)
-     
     }
 
     handleKeyDown = (e) => {

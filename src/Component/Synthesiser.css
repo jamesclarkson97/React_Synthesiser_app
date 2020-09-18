@@ -6,6 +6,7 @@
   border-left: 2px solid black;
   border-right: 2px solid black;
   cursor: pointer;
+  user-select: none;
 }
 
 .white-note {
@@ -15,13 +16,14 @@
     border: 1px solid black;
 }
 
+
 .black-note {
   position: absolute;
-  background-color: #333;
-  z-index: 1;
+  background-color: #222;
   width: 58%;
   height: 25px;
   bottom: -30%;
   color: white;
+  z-index: 1;
 }
 
