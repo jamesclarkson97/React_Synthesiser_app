@@ -21,9 +21,50 @@ class Synthesiser extends Component {
     
     handleOnDown = (e) => {
       Tone.start()
-      this.state.synth1.triggerAttack(e.target.id , "32n")
+      this.state.synth1.triggerAttack(e.target.id , this.state.now)
      
     }
+
+    handleKeyDown = (e) => {
+      e = window.event
+      var k = e.keyCode;
+	    switch(k){
+        case 74:
+          if (e.repeat != undefined) {
+            this.state.synth1.triggerRelease(k);
+          }
+          Tone.start()
+          this.state.synth1.triggerAttack("B4")
+          break;
+          case 85:
+          Tone.start()
+          this.state.synth1.triggerAttack("A#4")
+          break;
+          case 72:
+          Tone.start()
+          this.state.synth1.triggerAttack("A4")
+          break;
+        break;
+      }
+    }
+
+    handleKeyUp = (e) => {
+      e = window.event;
+      var k = e.keyCode;
+	    switch(k){
+        case 74:
+          this.state.synth1.triggerRelease("B4")
+          break;
+          case 85:
+          this.state.synth1.triggerRelease("A#4")
+          break;
+          case 72:
+          this.state.synth1.triggerRelease("A4")
+          break;
+        break;
+      }
+    }
+  
     
     handleOnLeave = (e) => {
       this.state.synth1.triggerRelease(e.target.id)
@@ -34,9 +75,9 @@ class Synthesiser extends Component {
   render() {
     
     return (
-      <div className="synthesiser-notes">
+      <div className="synthesiser-notes" onKeyDown={this.handleKeyDown} onKeyUp={this.handleKeyUp} tabIndex={0}>
         
-        <div id="B4" onMouseDown={this.handleOnDown} onMouseUp={this.handleOnLeave} onMouseOut={this.handleOnLeave} onKeyDown={this.handleOnDown} onKeyUp={this.handleOnLeave} tabIndex={0} className="white-note">B4
+        <div id="B4" onMouseDown={this.handleOnDown} onMouseUp={this.handleOnLeave} onMouseOut={this.handleOnLeave} className="white-note">B4
           <div  id="A#4" onMouseDown={this.handleOnDown} onMouseUp={this.handleOnLeave} onMouseOut={this.handleOnLeave}className="black-note">A#4</div>
         </div>
         <div  id="A4" onMouseDown={this.handleOnDown} onMouseUp={this.handleOnLeave} onMouseOut={this.handleOnLeave}className="white-note">A4
