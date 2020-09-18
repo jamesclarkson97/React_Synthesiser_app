@@ -1,0 +1,27 @@
+.synthesiser-notes {
+  position: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 15vw;
+  border-left: 2px solid black;
+  border-right: 2px solid black;
+  cursor: pointer;
+}
+
+.white-note {
+    position: relative;
+    height: 35px;
+    width: 100%;
+    border: 1px solid black;
+}
+
+.black-note {
+  position: absolute;
+  background-color: #333;
+  z-index: 1;
+  width: 58%;
+  height: 25px;
+  bottom: -30%;
+  color: white;
+}
+
