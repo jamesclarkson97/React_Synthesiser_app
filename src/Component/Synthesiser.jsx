@@ -29,6 +29,7 @@ class Synthesiser extends Component {
       e = window.event;
       let k = e.keyCode;
 	    switch(k){
+        default:
         case 74:
           Tone.start()
           this.state.synth1.triggerAttackRelease("B4", "8n")
