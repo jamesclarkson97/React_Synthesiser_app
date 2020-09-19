@@ -11,6 +11,7 @@
 
 .white-note {
     position: relative;
+    background-color: #f4f4f4;
     height: 35px;
     width: 100%;
     border: 1px solid black;
