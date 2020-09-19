@@ -10,13 +10,6 @@ class Synthesiser extends Component {
       synth1: new Tone.PolySynth(Tone.Synth).toDestination()
     }
   }
-  
-  
-
-    // function handleOnMouseDown(e) {
-    //   Tone.start().then(
-    //   synth1.triggerAttackRelease(e.target.value, Tone.now))
-    // }
     
     handleOnDown = (e) => {
       Tone.start()
@@ -28,6 +21,7 @@ class Synthesiser extends Component {
       let k = e.keyCode;
 	    switch(k){
         default:
+          
         case 74:
           Tone.start()
           this.state.synth1.triggerAttackRelease("B4", "8n")
@@ -42,35 +36,16 @@ class Synthesiser extends Component {
         break;
       }
     }
-
-    // handleKeyUp = (e) => {
-    //   e = window.event;
-    //   var k = e.keyCode;
-	  //   switch(k){
-    //     case 74:
-    //       this.state.synth1.triggerRelease("B4")
-    //       break;
-    //       case 85:
-    //       this.state.synth1.triggerRelease("A#4")
-    //       break;
-    //       case 72:
-    //       this.state.synth1.triggerRelease("A4")
-    //       break;
-    //     break;
-    //   }
-    // }
-  
     
     handleOnLeave = (e) => {
       this.state.synth1.triggerRelease(e.target.id);
     }
 
 
-
   render() {
     
     return (
-      <div className="synthesiser-notes" onKeyDown={this.handleKeyDown} onKeyUp={this.handleOnLeave} tabIndex="0">
+      <div className="synthesiser-notes" onKeyDown={this.handleKeyDown} tabIndex="0">
         
         <div id="B4" onMouseDown={this.handleOnDown} onMouseUp={this.handleOnLeave} onMouseOut={this.handleOnLeave} className="white-note">B4
           <div  id="A#4" onMouseDown={this.handleOnDown} onMouseUp={this.handleOnLeave} onMouseOut={this.handleOnLeave}className="black-note">A#4</div>
@@ -129,8 +104,6 @@ class Synthesiser extends Component {
         </div>
         <div id="C2"onMouseDown={this.handleOnDown} onMouseUp={this.handleOnLeave} onMouseOut={this.handleOnLeave}className="white-note">C2
         </div>
-        
-
         
       </div>
       
