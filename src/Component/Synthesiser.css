@@ -26,6 +26,7 @@
 .black-note {
   position: absolute;
   background-color: #222;
+  border-radius: 2px;
   width: 58%;
   height: 25px;
   bottom: -30%;
