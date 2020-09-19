@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import * as Tone from 'tone';
+import './Sequencer.css';
 
 class Sequencer extends Component {
     constructor() {
@@ -58,8 +59,8 @@ class Sequencer extends Component {
         var newOctave = Number(this.props.octave) + 1;
         return(
             <>
-            <button onClick={this.play}>Play</button>
             <div id="Notes">
+            <button onClick={this.play}>Play</button>
             <div id={"C" + newOctave} className="row">
                 <input type="checkbox"/>
                 <input type="checkbox"/>
