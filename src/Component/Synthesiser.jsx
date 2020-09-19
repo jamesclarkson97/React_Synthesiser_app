@@ -12,8 +12,10 @@ class Synthesiser extends Component {
   }
     
     handleOnDown = (e) => {
-      Tone.start()
-      this.state.synth1.triggerAttack(e.target.id , this.state.now)
+      console.log(e);
+      e.stopPropagation();
+      this.state.synth1.triggerAttack(e.target.id , Tone.now());
+      Tone.start();
     }
 
     handleKeyDown = (e) => {
@@ -40,6 +42,8 @@ class Synthesiser extends Component {
     handleOnLeave = (e) => {
       this.state.synth1.triggerRelease(e.target.id);
     }
+
+    stopPropagation = (e) => e.stopPropagation();
 
 
   render() {
