@@ -24,6 +24,7 @@ class Synthesiser extends Component {
 	    switch(k){
         default:
           
+        break;
         case 74:
           Tone.start()
           this.state.synth1.triggerAttackRelease("B4", "8n")
@@ -35,8 +36,8 @@ class Synthesiser extends Component {
           case 72:
           Tone.start()
           this.state.synth1.triggerAttackRelease("A4", "8n")
-        break;
-      }
+          break;
+        }
     }
     
     handleOnLeave = (e) => {

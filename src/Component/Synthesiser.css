@@ -2,10 +2,12 @@
   position: flex;
   flex-direction: column;
   font-size: 10px;
-  height: 100%;
+  padding: 0.5rem;
+  height: fit-content;
   width: 15vw;
-  border-left: 2px solid black;
-  border-right: 2px solid black;
+  /* border-left: 2px solid black;
+  border-right: 2px solid black; */
+  border: 2px solid black;
   cursor: pointer;
   user-select: none;
 }
@@ -17,6 +19,7 @@
     height: 35px;
     width: 100%;
     border: 1px solid black;
+    border-radius: 5px;
 }
 
 
