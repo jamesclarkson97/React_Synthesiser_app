@@ -3,18 +3,10 @@ import * as Tone from 'tone';
 import './Synthesiser.css';
 
 class Synthesiser extends Component {
-  constructor(){
-    super()
-
-    this.state = {
-      synth1: new Tone.PolySynth(Tone.Synth).toDestination()
-    }
-  }
     
     handleOnDown = (e) => {
-      console.log(e);
       e.stopPropagation();
-      this.state.synth1.triggerAttack(e.target.id , Tone.now());
+      this.props.synth1.triggerAttack(e.target.id , Tone.now());
       Tone.start();
     }
 
@@ -27,21 +19,21 @@ class Synthesiser extends Component {
         break;
         case 74:
           Tone.start()
-          this.state.synth1.triggerAttackRelease("B4", "8n")
+          this.props.synth1.triggerAttackRelease("B4", "8n")
           break;
           case 85:
           Tone.start()
-          this.state.synth1.triggerAttackRelease("A#4", "8n")
+          this.props.synth1.triggerAttackRelease("A#4", "8n")
           break;
           case 72:
           Tone.start()
-          this.state.synth1.triggerAttackRelease("A4", "8n")
+          this.props.synth1.triggerAttackRelease("A4", "8n")
           break;
         }
     }
     
     handleOnLeave = (e) => {
-      this.state.synth1.triggerRelease(e.target.id);
+      this.props.synth1.triggerRelease(e.target.id);
     }
 
     stopPropagation = (e) => e.stopPropagation();

@@ -1,14 +1,22 @@
 import React, {Component} from 'react';
 import Synthesiser from '../Component/Synthesiser';
+import * as Tone from 'tone';
 
 class SynthesiserContainer extends Component {
+  constructor(){
+    super()
 
-    render() {
-        return(
-            <>
-            <Synthesiser/>
-            </>
-        )
+    this.state = {
+      synth1: new Tone.PolySynth(Tone.Synth).toDestination()
+    }
+  }
+
+  render() {
+      return(
+          <>
+          <Synthesiser synth1={this.state.synth1}/>
+          </>
+      )
     }
 }
 
