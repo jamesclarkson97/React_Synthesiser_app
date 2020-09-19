@@ -40,10 +40,12 @@ class Synthesiser extends Component {
 
 
   render() {
+    var newOctave = Number(this.props.octave) + 1;
     
     return (
       <div className="synthesiser-notes" onKeyDown={this.handleKeyDown} tabIndex="0">
-
+        <div id={"C" + newOctave} onMouseDown={this.handleOnDown} onMouseUp={this.handleOnLeave} onMouseOut={this.handleOnLeave}className="white-note">C{newOctave}
+        </div>
         <div id={"B"+ this.props.octave} onMouseDown={this.handleOnDown} onMouseUp={this.handleOnLeave} onMouseOut={this.handleOnLeave} className="white-note">B{this.props.octave}
           <div  id={"A#" + this.props.octave} onMouseDown={this.handleOnDown} onMouseUp={this.handleOnLeave} onMouseOut={this.handleOnLeave}className="black-note">A#{this.props.octave}</div>
         </div>
