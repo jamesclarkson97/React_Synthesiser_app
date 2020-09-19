@@ -7,14 +7,24 @@ class SynthesiserContainer extends Component {
     super()
 
     this.state = {
-      synth1: new Tone.PolySynth(Tone.Synth).toDestination()
+      synth1: new Tone.PolySynth(Tone.Synth).toDestination(),
+      octave: '3'
     }
   }
+
+  handleSelect = (e) => this.setState({octave: e.target.value});
 
   render() {
       return(
           <>
-          <Synthesiser synth1={this.state.synth1}/>
+          <select defaultValue="3" onChange={this.handleSelect} className="octave-select">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+          <Synthesiser octave={this.state.octave} synth1={this.state.synth1}/>
           </>
       )
     }
