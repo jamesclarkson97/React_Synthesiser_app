@@ -1,0 +1,11 @@
+.synthesiser-container {
+  width: fit-content;
+  height: fit-content;
+}
+
+.octave-select-container {
+  text-align: left;
+}
+.octave-select {
+  display: inline-block;
+}
