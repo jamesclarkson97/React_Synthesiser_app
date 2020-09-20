@@ -19,10 +19,9 @@ class Sequencer extends Component {
     }
 
     play = () => {
-        Tone.start();  
+        this.stop();
         Tone.Transport.scheduleRepeat(() => {
             this.repeat();
-                 
         }, '4n');
         Tone.Transport.start();
     }
@@ -45,13 +44,19 @@ class Sequencer extends Component {
         let newIndex = this.state.index + 1
         this.setState({index: newIndex});      
     }
-    
+
+    stop = () => {
+        Tone.Transport.cancel();
+        this.setState({index: 0})
+    }
+
 
     render() {
         var newOctave = Number(this.props.octave) + 1;
         return(
             <div id="sequencer">
             <button onClick={this.play}>Play</button>
+            <button onClick={this.stop}>Stop</button>
             <div id="Notes">
             <div id={"C" + newOctave} className="row">
                 <input type="checkbox"/>
