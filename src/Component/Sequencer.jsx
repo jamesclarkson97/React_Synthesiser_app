@@ -28,7 +28,7 @@ class Sequencer extends Component {
         Tone.Transport.bpm.value = this.state.tempo;
         Tone.Transport.scheduleRepeat(() => {
             this.repeat();
-        }, '4n');
+        }, "8n");
         Tone.Transport.start();
     }
 
@@ -74,6 +74,10 @@ class Sequencer extends Component {
             <>
             
             <div id="sequencer">
+            <h4 id="tempo-heading">{this.state.tempo} BPM</h4> 
+            <div id="sequencer-controls">
+            <button onClick={this.play}>Play</button>
+            <button onClick={this.stop}>Stop</button>
             <input
                 type="range"
                 name="tempo" 
@@ -82,10 +86,8 @@ class Sequencer extends Component {
                 max="218"
                 value={this.state.tempo}
                 onChange={this.tempoChange}
-                />
-            <h4>{this.state.tempo} BPM</h4>   
-            <button onClick={this.play}>Play</button>
-            <button onClick={this.stop}>Stop</button>
+                /> 
+            </div>
             <div id="Notes">
             <div id={"C" + newOctave} className="row">
                 <input type="checkbox"/>

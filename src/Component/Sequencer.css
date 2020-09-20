@@ -1,5 +1,19 @@
 #sequencer {
   padding: 1rem;
+  padding-bottom: 4rem;
+}
+
+#sequencer-controls {
+  display: flex;
+  margin-bottom: 10px;
+  align-items: center;
+}
+
+
+#tempo, #tempo-heading {
+  display: inline-block;
+  font-size: smaller;
+  height: 0.25rem;
 }
 
 button {

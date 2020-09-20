@@ -1,6 +1,8 @@
 .App {
   text-align: center;
   height: 100vh;
+  max-height: 100vh;
+  margin: 1rem auto;
   display: flex;
   align-items: center;
 }
