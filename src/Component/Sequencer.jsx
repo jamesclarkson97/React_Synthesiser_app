@@ -14,6 +14,9 @@ class Sequencer extends Component {
     }
 
     componentDidMount() {
+        document.documentElement.addEventListener('mousedown', () => {
+            if (Tone.context.state !== 'running') Tone.context.resume();
+        });
         this.setState({rows : document.querySelectorAll('div.row')})
         this.setState({notes: document.getElementById("Notes").childNodes})
     }
