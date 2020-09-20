@@ -1,11 +1,15 @@
 .synthesiser-container {
   width: fit-content;
   height: fit-content;
+  display: flex;
 }
 
-.octave-select-container {
-  text-align: left;
+.controls-container {
+  text-align: center;
+  padding: 0.75rem;
 }
-.octave-select {
-  display: inline-block;
+.controls-container > select {
+  width: 2.5rem;
+  height: 1.25rem;
 }
+

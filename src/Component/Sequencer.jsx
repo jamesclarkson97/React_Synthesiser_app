@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import * as Tone from 'tone';
+import './Sequencer.css';
 
 class Sequencer extends Component {
     constructor() {
@@ -14,6 +15,9 @@ class Sequencer extends Component {
     }
 
     componentDidMount() {
+        document.documentElement.addEventListener('mousedown', () => {
+            if (Tone.context.state !== 'running') Tone.context.resume();
+        });
         this.setState({rows : document.querySelectorAll('div.row')})
         this.setState({notes: document.getElementById("Notes").childNodes})
     }
@@ -48,6 +52,7 @@ class Sequencer extends Component {
     }
 
     stop = () => {
+        Tone.Transport.stop()
         Tone.Transport.cancel();
         this.setState({index: 0})
     }
@@ -67,16 +72,18 @@ class Sequencer extends Component {
         var newOctave = Number(this.props.octave) + 1;
         return(
             <>
+            
+            <div id="sequencer">
             <input
-                    type="range"
-                    name="tempo" 
-                    id="tempo"
-                    min="40"
-                    max="218"
-                    value={this.state.tempo}
-                    onChange={this.tempoChange}
+                type="range"
+                name="tempo" 
+                id="tempo"
+                min="40"
+                max="218"
+                value={this.state.tempo}
+                onChange={this.tempoChange}
                 />
-                <h4>{this.state.tempo} BPM</h4>
+            <h4>{this.state.tempo} BPM</h4>   
             <button onClick={this.play}>Play</button>
             <button onClick={this.stop}>Stop</button>
             <div id="Notes">
@@ -211,6 +218,7 @@ class Sequencer extends Component {
                 <input type="checkbox"/>
             </div>
 
+            </div>
             </div>
             </>
         )
