@@ -3,6 +3,7 @@ import Synthesiser from '../Component/Synthesiser.jsx';
 import Sequencer from '../Component/Sequencer.jsx';
 import * as Tone from 'tone';
 import './SynthesiserContainer.css';
+import SoundControls from '../Component/SoundControls.jsx';
 
 class SynthesiserContainer extends Component {
   constructor(){
@@ -17,6 +18,7 @@ class SynthesiserContainer extends Component {
   handleSelect = (e) => this.setState({octave: e.target.value});
 
   render() {
+
       return(
           <div className="synthesiser-container">
             <div className="octave-select-container">
@@ -28,6 +30,7 @@ class SynthesiserContainer extends Component {
                 <option value="4">4</option>
                 <option value="5">5</option>
               </select>
+              <SoundControls synth1={this.state.synth1}/>
             </div>
             <Synthesiser octave={this.state.octave} synth1={this.state.synth1}/>
             <Sequencer octave={this.state.octave} synth1={this.state.synth1}/>
