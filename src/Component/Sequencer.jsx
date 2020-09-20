@@ -8,7 +8,8 @@ class Sequencer extends Component {
         this.state = {
             rows : '',
             notes: '',
-            index :0
+            index: 0,
+            tempo: 120
         }
     }
 
@@ -19,6 +20,8 @@ class Sequencer extends Component {
 
     play = () => {
         this.stop();
+        Tone.start();
+        Tone.Transport.bpm.value = this.state.tempo;
         Tone.Transport.scheduleRepeat(() => {
             this.repeat();
         }, '4n');
@@ -49,11 +52,31 @@ class Sequencer extends Component {
         this.setState({index: 0})
     }
 
+    save = () => {
+
+    }
+
+    tempoChange = (event) => {
+        const bpm = parseInt(event.target.value)
+        this.setState({tempo: bpm})
+        Tone.Transport.bpm.value = this.state.tempo
+    }
+
 
     render() {
         var newOctave = Number(this.props.octave) + 1;
         return(
             <>
+            <input
+                    type="range"
+                    name="tempo" 
+                    id="tempo"
+                    min="40"
+                    max="218"
+                    value={this.state.tempo}
+                    onChange={this.tempoChange}
+                />
+                <h4>{this.state.tempo} BPM</h4>
             <button onClick={this.play}>Play</button>
             <button onClick={this.stop}>Stop</button>
             <div id="Notes">
