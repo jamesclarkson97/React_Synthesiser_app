@@ -11,7 +11,8 @@ class SoundControls extends Component {
             distortion: 0,
             synth: this.props.synth1
         }
-        // this.gainChange = this.gainChange.bind(this)
+        this.gainChange = this.gainChange.bind(this)
+        this.distortionChange = this.distortionChange.bind(this)
     }
 
     gainChange = (e) => {

@@ -54,6 +54,7 @@ class Sequencer extends Component {
     render() {
         var newOctave = Number(this.props.octave) + 1;
         return(
+            <>
             <div id="sequencer">
             <button onClick={this.play}>Play</button>
             <button onClick={this.stop}>Stop</button>
@@ -191,6 +192,7 @@ class Sequencer extends Component {
 
             </div>
             </div>
+            </>
         )
     }
 
