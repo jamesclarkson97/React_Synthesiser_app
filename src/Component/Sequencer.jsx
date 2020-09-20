@@ -50,9 +50,9 @@ class Sequencer extends Component {
     render() {
         var newOctave = Number(this.props.octave) + 1;
         return(
-            <>
-            <div id="Notes">
+            <div id="sequencer">
             <button onClick={this.play}>Play</button>
+            <div id="Notes">
             <div id={"C" + newOctave} className="row">
                 <input type="checkbox"/>
                 <input type="checkbox"/>
@@ -185,7 +185,7 @@ class Sequencer extends Component {
             </div>
 
             </div>
-            </>
+            </div>
         )
     }
 
