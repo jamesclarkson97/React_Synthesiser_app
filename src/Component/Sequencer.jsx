@@ -15,43 +15,35 @@ class Sequencer extends Component {
 
     componentDidMount() {
         this.setState({rows : document.querySelectorAll('div.row')})
-        this.setState({notes: [document.getElementById("Notes").childNodes]})
+        this.setState({notes: document.getElementById("Notes").childNodes})
     }
 
     play = () => {
-        // console.log(this.state.notes[0][8].id)
-        // let input = this.state.rows[0].querySelector(`input:nth-child(1)`);
-        // console.log(input.checked)
-        
-
+        Tone.start();  
         Tone.Transport.scheduleRepeat(() => {
-            this.repeat()
-            Tone.start()
-        }, '1m');
+            this.repeat();
+                 
+        }, '4n');
         Tone.Transport.start();
-    //    this.props.synth1.triggerAttackRelease("C4", '8n')
     }
 
     repeat = () => {
-        // this.props.synth1.triggerAttackRelease("C4", '8n')
         let beat = this.state.index % 8;
-        let row = this.state.rows[0]
-        for (let i = 0; i < this.state.notes[0].length; i++) {
-            let note = this.state.notes[0][i]
-
-            let input = note.querySelector(`input:nth-child(${beat + 1})`);
-            
-            let noteId = note.id
-
-            if (input.checked) {
-                this.props.synth1.triggerAttackRelease(noteId, '8n')
+        for (let i = 0; i < this.state.rows.length; i++) {
+            let notes = [];
+            for (let n = 0; n < this.state.notes.length; n++) {
+                let input = this.state.notes[n].querySelector(`input:nth-child(${beat+1})`)
+                let note = this.state.notes[n].id
+                if (input.checked) {
+                    notes.push(note)
+                }  
             }
-            this.setState({index: +1});  
-        }
+            this.props.synth1.triggerAttackRelease(notes, '8n')
             
-        
-
-        
+            
+        }
+        let newIndex = this.state.index + 1
+        this.setState({index: newIndex});      
     }
     
 
