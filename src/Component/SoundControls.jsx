@@ -3,14 +3,20 @@ import React, {Component} from 'react';
 import * as Tone from 'tone';
 
 class SoundControls extends Component {
-
-    state = {
-        gain: 0
+    constructor(props) {
+        super(props);
+        this.state = {
+            gain: 0,
+            synth: this.props.synth1
+        }
+        // this.gainChange = this.gainChange.bind(this)
     }
 
     gainChange = (e) => {
-        const gain = new Tone.Gain(e.target.value).toDestination();
-        this.setState({gain: e.target.value})
+        let gain = e.target.value
+        const gainNode = new Tone.Gain(e.target.value).toDestination();
+        this.state.synth.connect(gainNode, 0)
+        this.setState({gain})
     }
 
     render() {
