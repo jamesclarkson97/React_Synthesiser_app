@@ -21,7 +21,7 @@ class SynthesiserContainer extends Component {
 
       return(
           <div className="synthesiser-container">
-            <div className="octave-select-container">
+            <div className="controls-container">
               <h6>Octave</h6>
               <select defaultValue="3" onChange={this.handleSelect} className="octave-select">
                 <option value="1">1</option>
