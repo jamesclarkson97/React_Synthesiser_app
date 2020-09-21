@@ -16,12 +16,14 @@ class Sequencer extends Component {
         }
     }
 
-    submitSequence (e) {
+    submitSequence = (e)  => {
         e.preventDefault()
+        const name = prompt('Enter sequence name:');
+        const sequence = this.state.sequence;
   
         SequencerService.postSequence({
-          name: this.name,
-          score: this.score
+          name: name,
+          sequence: sequence
         })
     }
 
@@ -44,11 +46,6 @@ class Sequencer extends Component {
             }));   
         }     
     }
-
-
-
-
-
 
     componentDidMount() {
         document.documentElement.addEventListener('mousedown', () => {
@@ -91,16 +88,11 @@ class Sequencer extends Component {
         this.setState({index: 0})
     }
 
-    save = () => {
-
-    }
-
     tempoChange = (event) => {
         const bpm = parseInt(event.target.value)
         this.setState({tempo: bpm})
         Tone.Transport.bpm.value = this.state.tempo
     }
-
 
     render() {
         var newOctave = Number(this.props.octave) + 1;
@@ -112,6 +104,7 @@ class Sequencer extends Component {
             <div id="sequencer-controls">
             <button onClick={this.play}>Play</button>
             <button onClick={this.stop}>Stop</button>
+            <button onClick={this.submitSequence}>Save</button>
             <input
                 type="range"
                 name="tempo" 
