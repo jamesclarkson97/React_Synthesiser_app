@@ -76,13 +76,13 @@ class Sequencer extends Component {
         this.stop();
         Tone.start();
         Tone.Transport.bpm.value = this.state.tempo;
-        Tone.Transport.scheduleRepeat(() => {
-            this.repeat();
-        }, "8n");
+        Tone.Transport.scheduleRepeat((time) => {
+            this.repeat(time);
+        }, "8n")
         Tone.Transport.start();
     }
 
-    repeat = () => {
+    repeat = (time) => {
         let beat = this.state.index % 8;
         for (let i = 0; i < this.state.rows.length; i++) {
             let notes = [];
@@ -93,7 +93,8 @@ class Sequencer extends Component {
                     notes.push(note)
                 }  
             }
-            this.props.synth1.triggerAttackRelease(notes, '8n')
+            this.props.synth1.triggerAttackRelease(notes, '8n', time)
+            
         }
         let newIndex = this.state.index + 1
         this.setState({index: newIndex});      
