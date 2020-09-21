@@ -149,6 +149,7 @@ class Sequencer extends Component {
             <button onClick={this.stop}>Stop</button>
             <button onClick={this.submitSequence}>Save</button>
             <select onChange={this.sequenceSelect}>
+                <option selected="true" disabled></option>
                 {this.state.sequenceList.map((sequence) => <option key={sequence._id} value={sequence.sequence}>{sequence.name}</option>)}
             </select>
             <input
