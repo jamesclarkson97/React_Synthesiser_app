@@ -26,3 +26,16 @@ input {
   margin: 3px 5px;
 
 }
+
+input[type='checkbox'] {
+  width: 12px;
+  height: 12px;
+  appearance: none;
+  outline: 2px #666 outset;
+  box-shadow: inset 0px 2px 5px 0px rgba(0, 0, 0, 0.4);
+  transition: all 0.1s ease;
+}
+input[type='checkbox']:checked {
+  background-color: #61dafb;
+  transition: all 0.1s ease;
+}
