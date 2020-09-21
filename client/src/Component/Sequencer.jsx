@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import * as Tone from 'tone';
 import './Sequencer.css';
+import SequencerService from '../services/SequencerService.js';
 
 class Sequencer extends Component {
     constructor() {
@@ -10,9 +11,37 @@ class Sequencer extends Component {
             rows : '',
             notes: '',
             index: 0,
-            tempo: 120
+            tempo: 120,
+            sequence: []
         }
     }
+
+    submitSequence (e) {
+        e.preventDefault()
+  
+        SequencerService.postSequence({
+          name: this.name,
+          score: this.score
+        })
+    }
+
+    handleCheck = (e) => {
+        const {id} = e.target
+        console.log(id)
+        console.log(e.target.className)
+        this.setState(prevState => ({
+            ...prevState,
+            sequence: [
+                ...prevState.sequence,
+                id
+            ]
+        }));  
+    }
+
+
+
+
+
 
     componentDidMount() {
         document.documentElement.addEventListener('mousedown', () => {
@@ -88,134 +117,134 @@ class Sequencer extends Component {
             </div>
             <div id="Notes">
             <div id={"C" + newOctave} className="row">
-                <input type="checkbox"/>
-                <input type="checkbox"/>
-                <input type="checkbox"/>
-                <input type="checkbox"/>
-                <input type="checkbox"/>
-                <input type="checkbox"/>
-                <input type="checkbox"/>
-                <input type="checkbox"/>
+                <input id={"C" + newOctave + "1"} className="1" onChange={this.handleCheck} type="checkbox"/>
+                <input id={"C" + newOctave + "2"} className="2" onChange={this.handleCheck} type="checkbox"/>
+                <input id={"C" + newOctave + "3"} className="3" onChange={this.handleCheck} type="checkbox"/>
+                <input id={"C" + newOctave + "4"} className="4" onChange={this.handleCheck} type="checkbox"/>
+                <input id={"C" + newOctave + "5"} className="5" onChange={this.handleCheck} type="checkbox"/>
+                <input id={"C" + newOctave + "6"} className="6" onChange={this.handleCheck} type="checkbox"/>
+                <input id={"C" + newOctave + "7"} className="7" onChange={this.handleCheck} type="checkbox"/>
+                <input id={"C" + newOctave + "8"} className="8" onChange={this.handleCheck} type="checkbox"/>
             </div>
             <div id={"B" + this.props.octave}>
-                <input type="checkbox"/>
-                <input type="checkbox"/>
-                <input type="checkbox"/>
-                <input type="checkbox"/>
-                <input type="checkbox"/>
-                <input type="checkbox"/>
-                <input type="checkbox"/>
-                <input type="checkbox"/>
+                <input id={"B" + this.props.octave + "1"} className="1" onChange={this.handleCheck} type="checkbox"/>
+                <input id={"B" + this.props.octave + "2"} className="2" onChange={this.handleCheck} type="checkbox"/>
+                <input id={"B" + this.props.octave + "3"} className="3" onChange={this.handleCheck} type="checkbox"/>
+                <input id={"B" + this.props.octave + "4"} className="4" onChange={this.handleCheck} type="checkbox"/>
+                <input id={"B" + this.props.octave + "5"} className="5" onChange={this.handleCheck} type="checkbox"/>
+                <input id={"B" + this.props.octave + "6"} className="6" onChange={this.handleCheck} type="checkbox"/>
+                <input id={"B" + this.props.octave + "7"} className="7" onChange={this.handleCheck} type="checkbox"/>
+                <input id={"B" + this.props.octave + "8"} className="8" onChange={this.handleCheck} type="checkbox"/>
             </div>
             <div id={"A#" + this.props.octave}>
-                <input type="checkbox"/>
-                <input type="checkbox"/>
-                <input type="checkbox"/>
-                <input type="checkbox"/>
-                <input type="checkbox"/>
-                <input type="checkbox"/>
-                <input type="checkbox"/>
-                <input type="checkbox"/>
+                <input id={"A#" + this.props.octave + "1"} className="1" onChange={this.handleCheck} type="checkbox"/>
+                <input id={"A#" + this.props.octave + "2"} className="2" onChange={this.handleCheck} type="checkbox"/>
+                <input id={"A#" + this.props.octave + "3"}className="3" onChange={this.handleCheck} type="checkbox"/>
+                <input id={"A#" + this.props.octave + "4"}className="4" onChange={this.handleCheck} type="checkbox"/>
+                <input id={"A#" + this.props.octave + "5"}className="5" onChange={this.handleCheck} type="checkbox"/>
+                <input id={"A#" + this.props.octave + "6"}className="6" onChange={this.handleCheck} type="checkbox"/>
+                <input id={"A#" + this.props.octave + "7"}className="7" onChange={this.handleCheck} type="checkbox"/>
+                <input id={"A#" + this.props.octave + "8"}className="8" onChange={this.handleCheck} type="checkbox"/>
             </div>
             <div id={"A" + this.props.octave}>
-                <input type="checkbox"/>
-                <input type="checkbox"/>
-                <input type="checkbox"/>
-                <input type="checkbox"/>
-                <input type="checkbox"/>
-                <input type="checkbox"/>
-                <input type="checkbox"/>
-                <input type="checkbox"/>
+                <input id={"A" + this.props.octave + "1"} className="1" onChange={this.handleCheck} type="checkbox"/>
+                <input id={"A" + this.props.octave + "2"} className="2" onChange={this.handleCheck} type="checkbox"/>
+                <input id={"A" + this.props.octave + "3"} className="3" onChange={this.handleCheck} type="checkbox"/>
+                <input id={"A" + this.props.octave + "4"} className="4" onChange={this.handleCheck} type="checkbox"/>
+                <input id={"A" + this.props.octave + "5"} className="5" onChange={this.handleCheck} type="checkbox"/>
+                <input id={"A" + this.props.octave + "6"} className="6" onChange={this.handleCheck} type="checkbox"/>
+                <input id={"A" + this.props.octave + "7"} className="7" onChange={this.handleCheck} type="checkbox"/>
+                <input id={"A" + this.props.octave + "8"} className="8" onChange={this.handleCheck} type="checkbox"/>
             </div>
             <div id={"G#" + this.props.octave}>
-                <input type="checkbox"/>
-                <input type="checkbox"/>
-                <input type="checkbox"/>
-                <input type="checkbox"/>
-                <input type="checkbox"/>
-                <input type="checkbox"/>
-                <input type="checkbox"/>
-                <input type="checkbox"/>
+                <input id={"G#" + this.props.octave + "1"} className="1" onChange={this.handleCheck} type="checkbox"/>
+                <input id={"G#" + this.props.octave + "2"} className="2" onChange={this.handleCheck} type="checkbox"/>
+                <input id={"G#" + this.props.octave + "3"} className="3" onChange={this.handleCheck} type="checkbox"/>
+                <input id={"G#" + this.props.octave + "4"} className="4" onChange={this.handleCheck} type="checkbox"/>
+                <input id={"G#" + this.props.octave + "5"} className="5" onChange={this.handleCheck} type="checkbox"/>
+                <input id={"G#" + this.props.octave + "6"} className="6" onChange={this.handleCheck} type="checkbox"/>
+                <input id={"G#" + this.props.octave + "7"} className="7" onChange={this.handleCheck} type="checkbox"/>
+                <input id={"G#" + this.props.octave + "8"} className="8" onChange={this.handleCheck} type="checkbox"/>
             </div>
             <div id={"G" + this.props.octave}>
-                <input type="checkbox"/>
-                <input type="checkbox"/>
-                <input type="checkbox"/>
-                <input type="checkbox"/>
-                <input type="checkbox"/>
-                <input type="checkbox"/>
-                <input type="checkbox"/>
-                <input type="checkbox"/>
+                <input id={"G" + this.props.octave + "1"} className="1" onChange={this.handleCheck} type="checkbox"/>
+                <input id={"G" + this.props.octave + "2"} className="2" onChange={this.handleCheck} type="checkbox"/>
+                <input id={"G" + this.props.octave + "3"} className="3" onChange={this.handleCheck} type="checkbox"/>
+                <input id={"G" + this.props.octave + "4"} className="4" onChange={this.handleCheck} type="checkbox"/>
+                <input id={"G" + this.props.octave + "5"} className="5" onChange={this.handleCheck} type="checkbox"/>
+                <input id={"G" + this.props.octave + "6"} className="6" onChange={this.handleCheck} type="checkbox"/>
+                <input id={"G" + this.props.octave + "7"} className="7" onChange={this.handleCheck} type="checkbox"/>
+                <input id={"G" + this.props.octave + "8"} className="8" onChange={this.handleCheck} type="checkbox"/>
             </div>
             <div id={"F#" + this.props.octave}>
-                <input type="checkbox"/>
-                <input type="checkbox"/>
-                <input type="checkbox"/>
-                <input type="checkbox"/>
-                <input type="checkbox"/>
-                <input type="checkbox"/>
-                <input type="checkbox"/>
-                <input type="checkbox"/>
+                <input id={"F#" + this.props.octave + "1"} className="1" onChange={this.handleCheck} type="checkbox"/>
+                <input id={"F#" + this.props.octave + "2"} className="2" onChange={this.handleCheck} type="checkbox"/>
+                <input id={"F#" + this.props.octave + "3"} className="3" onChange={this.handleCheck} type="checkbox"/>
+                <input id={"F#" + this.props.octave + "4"} className="4" onChange={this.handleCheck} type="checkbox"/>
+                <input id={"F#" + this.props.octave + "5"} className="5" onChange={this.handleCheck} type="checkbox"/>
+                <input id={"F#" + this.props.octave + "6"} className="6" onChange={this.handleCheck} type="checkbox"/>
+                <input id={"F#" + this.props.octave + "7"} className="7" onChange={this.handleCheck} type="checkbox"/>
+                <input id={"F#" + this.props.octave + "8"} className="8" onChange={this.handleCheck} type="checkbox"/>
             </div>
             <div id={"F" + this.props.octave}>
-                <input type="checkbox"/>
-                <input type="checkbox"/>
-                <input type="checkbox"/>
-                <input type="checkbox"/>
-                <input type="checkbox"/>
-                <input type="checkbox"/>
-                <input type="checkbox"/>
-                <input type="checkbox"/>
+                <input id={"F" + this.props.octave + "1"} className="1" onChange={this.handleCheck} type="checkbox"/>
+                <input id={"F" + this.props.octave + "2"} className="2" onChange={this.handleCheck} type="checkbox"/>
+                <input id={"F" + this.props.octave + "3"} className="3" onChange={this.handleCheck} type="checkbox"/>
+                <input id={"F" + this.props.octave + "4"} className="4" onChange={this.handleCheck} type="checkbox"/>
+                <input id={"F" + this.props.octave + "5"} className="5" onChange={this.handleCheck} type="checkbox"/>
+                <input id={"F" + this.props.octave + "6"} className="6" onChange={this.handleCheck} type="checkbox"/>
+                <input id={"F" + this.props.octave + "7"} className="7" onChange={this.handleCheck} type="checkbox"/>
+                <input id={"F" + this.props.octave + "8"} className="8" onChange={this.handleCheck} type="checkbox"/>
             </div>
             <div id={"E" + this.props.octave}>
-                <input type="checkbox"/>
-                <input type="checkbox"/>
-                <input type="checkbox"/>
-                <input type="checkbox"/>
-                <input type="checkbox"/>
-                <input type="checkbox"/>
-                <input type="checkbox"/>
-                <input type="checkbox"/>
+                <input id={"E" + this.props.octave + "1"} className="1" onChange={this.handleCheck} type="checkbox"/>
+                <input id={"E" + this.props.octave + "2"} className="2" onChange={this.handleCheck} type="checkbox"/>
+                <input id={"E" + this.props.octave + "3"} className="3" onChange={this.handleCheck} type="checkbox"/>
+                <input id={"E" + this.props.octave + "4"} className="4" onChange={this.handleCheck} type="checkbox"/>
+                <input id={"E" + this.props.octave + "5"} className="5" onChange={this.handleCheck} type="checkbox"/>
+                <input id={"E" + this.props.octave + "6"} className="6" onChange={this.handleCheck} type="checkbox"/>
+                <input id={"E" + this.props.octave + "7"} className="7" onChange={this.handleCheck} type="checkbox"/>
+                <input id={"E" + this.props.octave + "8"} className="8" onChange={this.handleCheck} type="checkbox"/>
             </div>
             <div id={"D#" + this.props.octave}>
-                <input type="checkbox"/>
-                <input type="checkbox"/>
-                <input type="checkbox"/>
-                <input type="checkbox"/>
-                <input type="checkbox"/>
-                <input type="checkbox"/>
-                <input type="checkbox"/>
-                <input type="checkbox"/>
+                <input id={"D#" + this.props.octave + "1"} className="1" onChange={this.handleCheck} type="checkbox"/>
+                <input id={"D#" + this.props.octave + "2"} className="2" onChange={this.handleCheck} type="checkbox"/>
+                <input id={"D#" + this.props.octave + "3"} className="3" onChange={this.handleCheck} type="checkbox"/>
+                <input id={"D#" + this.props.octave + "4"} className="4" onChange={this.handleCheck} type="checkbox"/>
+                <input id={"D#" + this.props.octave + "5"} className="5" onChange={this.handleCheck} type="checkbox"/>
+                <input id={"D#" + this.props.octave + "6"} className="6" onChange={this.handleCheck} type="checkbox"/>
+                <input id={"D#" + this.props.octave + "7"} className="7" onChange={this.handleCheck} type="checkbox"/>
+                <input id={"D#" + this.props.octave + "8"} className="8" onChange={this.handleCheck} type="checkbox"/>
             </div>
             <div id={"D" + this.props.octave}>
-                <input type="checkbox"/>
-                <input type="checkbox"/>
-                <input type="checkbox"/>
-                <input type="checkbox"/>
-                <input type="checkbox"/>
-                <input type="checkbox"/>
-                <input type="checkbox"/>
-                <input type="checkbox"/>
+                <input id={"D" + this.props.octave + "1"} className="1" onChange={this.handleCheck} type="checkbox"/>
+                <input id={"D" + this.props.octave + "2"} className="2" onChange={this.handleCheck} type="checkbox"/>
+                <input id={"D" + this.props.octave + "3"} className="3" onChange={this.handleCheck} type="checkbox"/>
+                <input id={"D" + this.props.octave + "4"} className="4" onChange={this.handleCheck} type="checkbox"/>
+                <input id={"D" + this.props.octave + "5"} className="5" onChange={this.handleCheck} type="checkbox"/>
+                <input id={"D" + this.props.octave + "6"} className="6" onChange={this.handleCheck} type="checkbox"/>
+                <input id={"D" + this.props.octave + "7"} className="7" onChange={this.handleCheck} type="checkbox"/>
+                <input id={"D" + this.props.octave + "8"} className="8" onChange={this.handleCheck} type="checkbox"/>
             </div>
             <div id={"C#" + this.props.octave}>
-                <input type="checkbox"/>
-                <input type="checkbox"/>
-                <input type="checkbox"/>
-                <input type="checkbox"/>
-                <input type="checkbox"/>
-                <input type="checkbox"/>
-                <input type="checkbox"/>
-                <input type="checkbox"/>
+                <input id={"C#" + this.props.octave + "1"} className="1" onChange={this.handleCheck} type="checkbox"/>
+                <input id={"C#" + this.props.octave + "2"} className="2" onChange={this.handleCheck} type="checkbox"/>
+                <input id={"C#" + this.props.octave + "3"} className="3" onChange={this.handleCheck} type="checkbox"/>
+                <input id={"C#" + this.props.octave + "4"} className="4" onChange={this.handleCheck} type="checkbox"/>
+                <input id={"C#" + this.props.octave + "5"} className="5" onChange={this.handleCheck} type="checkbox"/>
+                <input id={"C#" + this.props.octave + "6"} className="6" onChange={this.handleCheck} type="checkbox"/>
+                <input id={"C#" + this.props.octave + "7"} className="7" onChange={this.handleCheck} type="checkbox"/>
+                <input id={"C#" + this.props.octave + "8"} className="8" onChange={this.handleCheck} type="checkbox"/>
             </div>
             <div id={"C" + this.props.octave}>
-                <input type="checkbox"/>
-                <input type="checkbox"/>
-                <input type="checkbox"/>
-                <input type="checkbox"/>
-                <input type="checkbox"/>
-                <input type="checkbox"/>
-                <input type="checkbox"/>
-                <input type="checkbox"/>
+                <input id={"C" + this.props.octave + "1"} className="1" onChange={this.handleCheck} type="checkbox"/>
+                <input id={"C" + this.props.octave + "2"} className="2" onChange={this.handleCheck} type="checkbox"/>
+                <input id={"C" + this.props.octave + "3"} className="3" onChange={this.handleCheck} type="checkbox"/>
+                <input id={"C" + this.props.octave + "4"} className="4" onChange={this.handleCheck} type="checkbox"/>
+                <input id={"C" + this.props.octave + "5"} className="5" onChange={this.handleCheck} type="checkbox"/>
+                <input id={"C" + this.props.octave + "6"} className="6" onChange={this.handleCheck} type="checkbox"/>
+                <input id={"C" + this.props.octave + "7"} className="7" onChange={this.handleCheck} type="checkbox"/>
+                <input id={"C" + this.props.octave + "8"} className="8" onChange={this.handleCheck} type="checkbox"/>
             </div>
 
             </div>
