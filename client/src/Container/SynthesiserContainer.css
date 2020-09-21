@@ -4,6 +4,11 @@
   height: fit-content;
   display: flex;
   align-items: center;
+  position: absolute;
+  left: 25%;
+  transform: translateX(-25%);
+  right: 27.5%;
+  transform: translateX(-27.5%);
 }
 
 .controls-container {

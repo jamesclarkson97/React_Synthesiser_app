@@ -5,6 +5,7 @@
   margin: 1rem auto;
   display: flex;
   align-items: center;
+  position: relative;
 }
 body {
   background-color: #282c34;
