@@ -62,12 +62,14 @@ class Sequencer extends Component {
         this.setState({rows : document.querySelectorAll('div.row')})
         this.setState({notes: document.getElementById("Notes").childNodes})
         this.loadSequence();
+        this.checkForChecked()
     }
 
     componentDidUpdate(prevState) {
         if (this.state.sequenceList !== prevState.sequenceList) {
             this.loadSequence();
         }
+        this.checkForChecked()
     }
 
     play = () => {
@@ -109,6 +111,23 @@ class Sequencer extends Component {
         Tone.Transport.bpm.value = this.state.tempo
     }
 
+    checkForChecked = () => {
+        let sequence = [...this.state.sequence]
+        sequence.map((id) => 
+            document.getElementById(id).checked = true
+            );
+    }
+
+
+    sequenceSelect = (e) => this.setState({sequence: e.target.value.split(',')})
+
+
+
+
+
+
+
+
     render() {
         var newOctave = Number(this.props.octave) + 1;
         return(
@@ -120,7 +139,7 @@ class Sequencer extends Component {
             <button onClick={this.play}>Play</button>
             <button onClick={this.stop}>Stop</button>
             <button onClick={this.submitSequence}>Save</button>
-            <select >
+            <select onChange={this.sequenceSelect}>
                 {this.state.sequenceList.map((sequence) => <option key={sequence._id} value={sequence.sequence}>{sequence.name}</option>)}
             </select>
             <input
