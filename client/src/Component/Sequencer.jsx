@@ -44,8 +44,6 @@ class Sequencer extends Component {
                 }  
             }
             this.props.synth1.triggerAttackRelease(notes, '8n')
-            
-            
         }
         let newIndex = this.state.index + 1
         this.setState({index: newIndex});      
