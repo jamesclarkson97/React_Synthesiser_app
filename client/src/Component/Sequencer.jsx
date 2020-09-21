@@ -12,15 +12,23 @@ class Sequencer extends Component {
             notes: '',
             index: 0,
             tempo: 120,
-            sequence: []
+            sequence: [],
+            sequenceList: []
         }
     }
+
+    loadSequence = () => {
+        let sequenceList = SequencerService.getSequences()
+            .then(sequences => sequenceList = sequences)
+            .then(sequenceList => {
+                this.setState({sequenceList})
+            })
+     };
 
     submitSequence = (e)  => {
         e.preventDefault()
         const name = prompt('Enter sequence name:');
         const sequence = this.state.sequence;
-  
         SequencerService.postSequence({
           name: name,
           sequence: sequence
@@ -53,6 +61,13 @@ class Sequencer extends Component {
         });
         this.setState({rows : document.querySelectorAll('div.row')})
         this.setState({notes: document.getElementById("Notes").childNodes})
+        this.loadSequence();
+    }
+
+    componentDidUpdate(prevState) {
+        if (this.state.sequenceList !== prevState.sequenceList) {
+            this.loadSequence();
+        }
     }
 
     play = () => {
@@ -105,6 +120,9 @@ class Sequencer extends Component {
             <button onClick={this.play}>Play</button>
             <button onClick={this.stop}>Stop</button>
             <button onClick={this.submitSequence}>Save</button>
+            <select >
+                {this.state.sequenceList.map((sequence) => <option key={sequence._id} value={sequence.sequence}>{sequence.name}</option>)}
+            </select>
             <input
                 type="range"
                 name="tempo" 
