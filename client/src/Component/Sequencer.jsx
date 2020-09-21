@@ -117,9 +117,18 @@ class Sequencer extends Component {
             document.getElementById(id).checked = true
             );
     }
+    uncheckAll = () => {
+        let sequence = [...this.state.sequence]
+        sequence.map((id) => 
+            document.getElementById(id).checked = false
+            );
+    }
 
 
-    sequenceSelect = (e) => this.setState({sequence: e.target.value.split(',')})
+    sequenceSelect = (e) => {
+        this.uncheckAll();
+        this.setState({sequence: e.target.value.split(',')})
+    }
 
 
 
@@ -166,7 +175,7 @@ class Sequencer extends Component {
             <div id={"B" + this.props.octave}>
                 <input id={"B1"} className="1" onChange={this.handleCheck} type="checkbox"/>
                 <input id={"B2"} className="2" onChange={this.handleCheck} type="checkbox"/>
-                <input id={"B3"} className="3" onChange={this.handleCheck} type="checkbox"/>
+                <input id={"BN3"} className="3" onChange={this.handleCheck} type="checkbox"/>
                 <input id={"B4"} className="4" onChange={this.handleCheck} type="checkbox"/>
                 <input id={"B5"} className="5" onChange={this.handleCheck} type="checkbox"/>
                 <input id={"B6"} className="6" onChange={this.handleCheck} type="checkbox"/>
@@ -176,7 +185,7 @@ class Sequencer extends Component {
             <div id={"A#" + this.props.octave}>
                 <input id={"A#1"} className="1" onChange={this.handleCheck} type="checkbox"/>
                 <input id={"A#2"} className="2" onChange={this.handleCheck} type="checkbox"/>
-                <input id={"A#3"}className="3" onChange={this.handleCheck} type="checkbox"/>
+                <input id={"A#L3"}className="3" onChange={this.handleCheck} type="checkbox"/>
                 <input id={"A#4"}className="4" onChange={this.handleCheck} type="checkbox"/>
                 <input id={"A#5"}className="5" onChange={this.handleCheck} type="checkbox"/>
                 <input id={"A#6"}className="6" onChange={this.handleCheck} type="checkbox"/>
@@ -186,7 +195,7 @@ class Sequencer extends Component {
             <div id={"A" + this.props.octave}>
                 <input id={"A1"} className="1" onChange={this.handleCheck} type="checkbox"/>
                 <input id={"A2"} className="2" onChange={this.handleCheck} type="checkbox"/>
-                <input id={"A3"} className="3" onChange={this.handleCheck} type="checkbox"/>
+                <input id={"AL3"} className="3" onChange={this.handleCheck} type="checkbox"/>
                 <input id={"A4"} className="4" onChange={this.handleCheck} type="checkbox"/>
                 <input id={"A5"} className="5" onChange={this.handleCheck} type="checkbox"/>
                 <input id={"A6"} className="6" onChange={this.handleCheck} type="checkbox"/>
@@ -196,7 +205,7 @@ class Sequencer extends Component {
             <div id={"G#" + this.props.octave}>
                 <input id={"G#1"} className="1" onChange={this.handleCheck} type="checkbox"/>
                 <input id={"G#2"} className="2" onChange={this.handleCheck} type="checkbox"/>
-                <input id={"G#3"} className="3" onChange={this.handleCheck} type="checkbox"/>
+                <input id={"G#L3"} className="3" onChange={this.handleCheck} type="checkbox"/>
                 <input id={"G#4"} className="4" onChange={this.handleCheck} type="checkbox"/>
                 <input id={"G#5"} className="5" onChange={this.handleCheck} type="checkbox"/>
                 <input id={"G#6"} className="6" onChange={this.handleCheck} type="checkbox"/>
@@ -206,7 +215,7 @@ class Sequencer extends Component {
             <div id={"G" + this.props.octave}>
                 <input id={"G1"} className="1" onChange={this.handleCheck} type="checkbox"/>
                 <input id={"G2"} className="2" onChange={this.handleCheck} type="checkbox"/>
-                <input id={"G3"} className="3" onChange={this.handleCheck} type="checkbox"/>
+                <input id={"GL3"} className="3" onChange={this.handleCheck} type="checkbox"/>
                 <input id={"G4"} className="4" onChange={this.handleCheck} type="checkbox"/>
                 <input id={"G5"} className="5" onChange={this.handleCheck} type="checkbox"/>
                 <input id={"G6"} className="6" onChange={this.handleCheck} type="checkbox"/>
@@ -216,7 +225,7 @@ class Sequencer extends Component {
             <div id={"F#" + this.props.octave}>
                 <input id={"F#1"} className="1" onChange={this.handleCheck} type="checkbox"/>
                 <input id={"F#2"} className="2" onChange={this.handleCheck} type="checkbox"/>
-                <input id={"F#3"} className="3" onChange={this.handleCheck} type="checkbox"/>
+                <input id={"F#L3"} className="3" onChange={this.handleCheck} type="checkbox"/>
                 <input id={"F#4"} className="4" onChange={this.handleCheck} type="checkbox"/>
                 <input id={"F#5"} className="5" onChange={this.handleCheck} type="checkbox"/>
                 <input id={"F#6"} className="6" onChange={this.handleCheck} type="checkbox"/>
@@ -226,7 +235,7 @@ class Sequencer extends Component {
             <div id={"F" + this.props.octave}>
                 <input id={"F1"} className="1" onChange={this.handleCheck} type="checkbox"/>
                 <input id={"F2"} className="2" onChange={this.handleCheck} type="checkbox"/>
-                <input id={"F3"} className="3" onChange={this.handleCheck} type="checkbox"/>
+                <input id={"FL3"} className="3" onChange={this.handleCheck} type="checkbox"/>
                 <input id={"F4"} className="4" onChange={this.handleCheck} type="checkbox"/>
                 <input id={"F5"} className="5" onChange={this.handleCheck} type="checkbox"/>
                 <input id={"F6"} className="6" onChange={this.handleCheck} type="checkbox"/>
@@ -236,7 +245,7 @@ class Sequencer extends Component {
             <div id={"E" + this.props.octave}>
                 <input id={"E1"} className="1" onChange={this.handleCheck} type="checkbox"/>
                 <input id={"E2"} className="2" onChange={this.handleCheck} type="checkbox"/>
-                <input id={"E3"} className="3" onChange={this.handleCheck} type="checkbox"/>
+                <input id={"EL3"} className="3" onChange={this.handleCheck} type="checkbox"/>
                 <input id={"E4"} className="4" onChange={this.handleCheck} type="checkbox"/>
                 <input id={"E5"} className="5" onChange={this.handleCheck} type="checkbox"/>
                 <input id={"E6"} className="6" onChange={this.handleCheck} type="checkbox"/>
@@ -246,7 +255,7 @@ class Sequencer extends Component {
             <div id={"D#" + this.props.octave}>
                 <input id={"D#1"} className="1" onChange={this.handleCheck} type="checkbox"/>
                 <input id={"D#2"} className="2" onChange={this.handleCheck} type="checkbox"/>
-                <input id={"D#3"} className="3" onChange={this.handleCheck} type="checkbox"/>
+                <input id={"D#L3"} className="3" onChange={this.handleCheck} type="checkbox"/>
                 <input id={"D#4"} className="4" onChange={this.handleCheck} type="checkbox"/>
                 <input id={"D#5"} className="5" onChange={this.handleCheck} type="checkbox"/>
                 <input id={"D#6"} className="6" onChange={this.handleCheck} type="checkbox"/>
@@ -256,7 +265,7 @@ class Sequencer extends Component {
             <div id={"D" + this.props.octave}>
                 <input id={"D1"} className="1" onChange={this.handleCheck} type="checkbox"/>
                 <input id={"D2"} className="2" onChange={this.handleCheck} type="checkbox"/>
-                <input id={"D3"} className="3" onChange={this.handleCheck} type="checkbox"/>
+                <input id={"DL3"} className="3" onChange={this.handleCheck} type="checkbox"/>
                 <input id={"D4"} className="4" onChange={this.handleCheck} type="checkbox"/>
                 <input id={"D5"} className="5" onChange={this.handleCheck} type="checkbox"/>
                 <input id={"D6"} className="6" onChange={this.handleCheck} type="checkbox"/>
@@ -266,7 +275,7 @@ class Sequencer extends Component {
             <div id={"C#" + this.props.octave}>
                 <input id={"C#1"} className="1" onChange={this.handleCheck} type="checkbox"/>
                 <input id={"C#2"} className="2" onChange={this.handleCheck} type="checkbox"/>
-                <input id={"C#3"} className="3" onChange={this.handleCheck} type="checkbox"/>
+                <input id={"C#L3"} className="3" onChange={this.handleCheck} type="checkbox"/>
                 <input id={"C#4"} className="4" onChange={this.handleCheck} type="checkbox"/>
                 <input id={"C#5"} className="5" onChange={this.handleCheck} type="checkbox"/>
                 <input id={"C#6"} className="6" onChange={this.handleCheck} type="checkbox"/>
@@ -276,7 +285,7 @@ class Sequencer extends Component {
             <div id={"C" + this.props.octave}>
                 <input id={"C1"} className="1" onChange={this.handleCheck} type="checkbox"/>
                 <input id={"C2"} className="2" onChange={this.handleCheck} type="checkbox"/>
-                <input id={"C3"} className="3" onChange={this.handleCheck} type="checkbox"/>
+                <input id={"CL3"} className="3" onChange={this.handleCheck} type="checkbox"/>
                 <input id={"C4"} className="4" onChange={this.handleCheck} type="checkbox"/>
                 <input id={"C5"} className="5" onChange={this.handleCheck} type="checkbox"/>
                 <input id={"C6"} className="6" onChange={this.handleCheck} type="checkbox"/>
