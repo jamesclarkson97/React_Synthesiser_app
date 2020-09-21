@@ -149,8 +149,8 @@ class Sequencer extends Component {
             <button onClick={this.play}>Play</button>
             <button onClick={this.stop}>Stop</button>
             <button onClick={this.submitSequence}>Save</button>
-            <select onChange={this.sequenceSelect}>
-                <option selected="true" disabled></option>
+            <select disabled={this.state.sequenceList ? null : true} defaultValue="select-sequence" onChange={this.sequenceSelect}>
+                <option disabled value="select-sequence">Select Sequence</option>
                 {this.state.sequenceList.map((sequence) => <option key={sequence._id} value={sequence.sequence}>{sequence.name}</option>)}
             </select>
             <input
