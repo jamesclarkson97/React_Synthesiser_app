@@ -53,3 +53,17 @@ input[type='checkbox']:checked {
 #tempo-span {
   color: #61dafb;
 }
+
+#beats {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  word-spacing: 0.2rem;
+  height: fit-content;
+}
+
+#beats > p {
+  margin: 0;
+  margin-bottom: 2px;
+}

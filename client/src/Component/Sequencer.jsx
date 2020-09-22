@@ -160,6 +160,7 @@ class Sequencer extends Component {
                 onChange={this.tempoChange}
                 /> 
             </div>
+            <div id="beats"><p>1 2 3 4 5 6 7 8</p></div>
             <div id="Notes">
             <div id={"C" + newOctave} className="row">
                 <input id={"CU1"} className="1" onChange={this.handleCheck} type="checkbox"/>
