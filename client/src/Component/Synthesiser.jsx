@@ -11,64 +11,64 @@ class Synthesiser extends Component {
     }
 
     handleKeyDown = (e) => {
-      let upperOctave = this.props.octave
+      let upperOctave = Number(this.props.octave) + 1;
       e = window.event;
       let k = e.keyCode;
 	    switch(k){
         default:
           
-        break;
-        case 74:
+          break;
+        case 75:
           Tone.start()
           this.props.synth1.triggerAttackRelease(`C${upperOctave}`, "8n")
           break;
         case 74:
           Tone.start()
-          this.props.synth1.triggerAttackRelease("B4", "8n")
+          this.props.synth1.triggerAttackRelease(`B${this.props.octave}`, "8n")
           break;
-          case 85:
+        case 85:
           Tone.start()
-          this.props.synth1.triggerAttackRelease("A#4", "8n")
+          this.props.synth1.triggerAttackRelease(`A#${this.props.octave}`, "8n")
           break;
-          case 72:
+        case 72:
           Tone.start()
-          this.props.synth1.triggerAttackRelease("A4", "8n")
+          this.props.synth1.triggerAttackRelease(`A${this.props.octave}`, "8n")
           break;
-          case 74:
+        case 89:
           Tone.start()
-          this.props.synth1.triggerAttackRelease("B4", "8n")
+          this.props.synth1.triggerAttackRelease(`G#${this.props.octave}`, "8n")
           break;
-          case 85:
+        case 71:
           Tone.start()
-          this.props.synth1.triggerAttackRelease("A#4", "8n")
+          this.props.synth1.triggerAttackRelease(`G${this.props.octave}`, "8n")
           break;
-          case 72:
+        case 84:
           Tone.start()
-          this.props.synth1.triggerAttackRelease("A4", "8n")
+          this.props.synth1.triggerAttackRelease(`F#${this.props.octave}`, "8n")
           break;
-          case 74:
+        case 70:
           Tone.start()
-          this.props.synth1.triggerAttackRelease("B4", "8n")
+          this.props.synth1.triggerAttackRelease(`F${this.props.octave}`, "8n")
           break;
-          case 85:
+        case 68:
           Tone.start()
-          this.props.synth1.triggerAttackRelease("A#4", "8n")
+          this.props.synth1.triggerAttackRelease(`E${this.props.octave}`, "8n")
           break;
-          case 72:
+        case 69:
           Tone.start()
-          this.props.synth1.triggerAttackRelease("A4", "8n")
+          this.props.synth1.triggerAttackRelease(`D#${this.props.octave}`, "8n")
           break;
-          case 74:
+        case 83:
           Tone.start()
-          this.props.synth1.triggerAttackRelease("B4", "8n")
+          this.props.synth1.triggerAttackRelease(`D${this.props.octave}`, "8n")
           break;
-          case 85:
+        case 87:
           Tone.start()
-          this.props.synth1.triggerAttackRelease("A#4", "8n")
+          this.props.synth1.triggerAttackRelease(`C#${this.props.octave}`, "8n")
           break;
-          case 72:
+        case 65:
           Tone.start()
-          this.props.synth1.triggerAttackRelease("A4", "8n")
+          this.props.synth1.triggerAttackRelease(`C${this.props.octave}`, "8n")
           break;
         }
     }
