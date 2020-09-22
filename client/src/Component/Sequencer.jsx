@@ -60,7 +60,7 @@ class Sequencer extends Component {
         this.setState({rows : document.querySelectorAll('div.row')})
         this.setState({notes: document.getElementById("Notes").childNodes})
         this.loadSequence();
-        this.checkForChecked()
+        this.checkForChecked();
     }
 
     componentDidUpdate(prevState) {
@@ -72,9 +72,9 @@ class Sequencer extends Component {
 
     play = () => {
         this.stop();
-        Tone.start();
         Tone.Transport.bpm.value = this.state.tempo;
         Tone.Transport.scheduleRepeat((time) => {
+            Tone.start();
             this.repeat(time);
         }, "8n")
         Tone.Transport.start();
@@ -91,8 +91,7 @@ class Sequencer extends Component {
                     notes.push(note)
                 }  
             }
-            this.props.synth1.triggerAttackRelease(notes, '8n', time)
-            
+            this.props.synth1.triggerAttackRelease(notes,"8n", time)
         }
         let newIndex = this.state.index + 1
         this.setState({index: newIndex});      
