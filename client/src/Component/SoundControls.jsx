@@ -7,13 +7,9 @@ class SoundControls extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            // gain: this.props.gain,
-            distortion: 0,
             synth: this.props.synth1,
             waveForm: this.props.synth1.get().oscillator.type
         }
-        // this.gainChange = this.gainChange.bind(this)
-        this.distortionChange = this.distortionChange.bind(this)
     }
 
     
@@ -53,11 +49,8 @@ class SoundControls extends Component {
         this.props.changeGain(e.target.value)
     }
 
-    distortionChange = (e) => {
-        let distortion = e.target.value
-        const distortionNode = new Tone.Distortion(distortion).toDestination();
-        this.state.synth.connect(distortionNode, 0)
-        this.setState({distortion})
+    updateReverb = (e) => {
+        this.props.changeReverb(e.target.value)
     }
 
     render() {
@@ -83,8 +76,8 @@ class SoundControls extends Component {
                 </select>
                 <h6>Gain</h6>
                 <input id="gain" type="range" min="0.0" max="20.0" step="0.1" value={this.props.gain} onChange={this.updateGain}></input>
-                <h6>Distortion</h6>
-                <input id="distortion" type="range" min="0.0" max="10.0" step="0.1" value={this.state.distortion} onChange={this.distortionChange}></input>
+                <h6>Reverb</h6>
+                <input id="reverb" type="range" min="0.0" max="20.0" step="0.1" value={this.props.reverb} onChange={this.updateReverb}></input>
                 
             </div>
         )

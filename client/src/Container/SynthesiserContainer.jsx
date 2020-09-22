@@ -13,7 +13,9 @@ class SynthesiserContainer extends Component {
       synth1: new Tone.PolySynth(Tone.Synth).toDestination(),
       octave: '3',
       gain: 0,
-      gainNode: new Tone.Gain(0).toDestination()
+      gainNode: new Tone.Gain(0).toDestination(),
+      reverb: 0,
+      reverbNode: new Tone.Reverb().toDestination()
     }
   }
 
@@ -30,6 +32,17 @@ class SynthesiserContainer extends Component {
   changeGain = (gain) => {
     this.state.gainNode.gain.rampTo(parseFloat(gain), 0.1);
     this.setState({gain: parseFloat(gain)});
+  }
+
+  changeReverb = (reverb) => {
+    if (reverb <= 0.001) {
+      reverb = 0.01
+      this.state.reverbNode.set({wet: 0})
+    } else {
+      this.state.reverbNode.set({wet: 1})
+    }
+    this.state.reverbNode.set({decay: reverb})
+    this.setState({reverb: parseFloat(reverb)})
   }
   
 
@@ -123,6 +136,7 @@ class SynthesiserContainer extends Component {
 
   render() {
     this.state.synth1.connect(this.state.gainNode);
+    this.state.synth1.connect(this.state.reverbNode);
       return(
           <div className="synthesiser-container" onKeyDown={this.handleKeyDown} tabIndex="0">
             <div className="controls-container">
@@ -134,7 +148,15 @@ class SynthesiserContainer extends Component {
                 <option value="4">4</option>
                 <option value="5">5</option>
               </select>
-              <SoundControls synth1={this.state.synth1} changeWaveForm={this.changeWaveForm} changeSynth={this.changeSynth} changeGain={this.changeGain} gain={this.state.gain}/>
+              <SoundControls 
+              synth1={this.state.synth1} 
+              changeWaveForm={this.changeWaveForm} 
+              changeSynth={this.changeSynth} 
+              changeGain={this.changeGain} 
+              gain={this.state.gain} 
+              changeReverb={this.changeReverb} 
+              reverb={this.state.reverb}
+              />
             </div>
             <Synthesiser octave={this.state.octave} synth1={this.state.synth1}/>
             <Sequencer octave={this.state.octave} synth1={this.state.synth1}/>
