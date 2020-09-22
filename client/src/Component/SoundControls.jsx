@@ -16,6 +16,32 @@ class SoundControls extends Component {
     }
 
     changeWaveForm = (e) => this.setState({synth: this.props.synth1.set({oscillator: {type: e.target.value}})})
+    
+    updateSynth = (e) => {
+        switch(e.target.value) {
+            default:
+                break;
+            case "Tone.Synth":
+                this.props.changeSynth(Tone.Synth);
+                break;
+            case "Tone.AMSynth":
+                this.props.changeSynth(Tone.AMSynth);
+                break;
+            case "Tone.FMSynth":
+                this.props.changeSynth(Tone.FMSynth);
+                break;
+            case "Tone.MembraneSynth":
+                this.props.changeSynth(Tone.MembraneSynth);
+                break;
+            case "Tone.MetalSynth":
+                this.props.changeSynth(Tone.MetalSynth)
+                break;
+            case "Tone.PluckSynth":
+                this.props.changeSynth(Tone.PluckSynth)
+                break;
+        }
+        
+    }
 
     gainChange = (e) => {
         let gain = e.target.value
@@ -46,6 +72,14 @@ class SoundControls extends Component {
                 <input id="gain" type="range" min="0.0" max="10.0" step="0.1" value={this.state.gain} onChange={this.gainChange}></input>
                 <h6>Distortion</h6>
                 <input id="distortion" type="range" min="0.0" max="10.0" step="0.1" value={this.state.distortion} onChange={this.distortionChange}></input>
+                <div id="synth-buttons">
+                    <button onClick={this.updateSynth} value="Tone.Synth">Synth</button>
+                    <button onClick={this.updateSynth} value="Tone.AMSynth">AM Synth</button>
+                    <button onClick={this.updateSynth} value="Tone.FMSynth">FM Synth</button>
+                    <button onClick={this.updateSynth} value="Tone.MembraneSynth">Membrane Synth</button>
+                    <button onClick={this.updateSynth} value="Tone.MetalSynth">Metal Synth</button>
+                    <button onClick={this.updateSynth} value="Tone.PluckSynth">Pluck Synth</button>
+                </div>
             </div>
         )
     }

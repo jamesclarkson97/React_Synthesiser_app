@@ -10,27 +10,7 @@ class Synthesiser extends Component {
       Tone.start();
     }
 
-    handleKeyDown = (e) => {
-      e = window.event;
-      let k = e.keyCode;
-	    switch(k){
-        default:
-          
-        break;
-        case 74:
-          Tone.start()
-          this.props.synth1.triggerAttackRelease("B4", "8n")
-          break;
-          case 85:
-          Tone.start()
-          this.props.synth1.triggerAttackRelease("A#4", "8n")
-          break;
-          case 72:
-          Tone.start()
-          this.props.synth1.triggerAttackRelease("A4", "8n")
-          break;
-        }
-    }
+    
     
     handleOnLeave = (e) => {
       this.props.synth1.triggerRelease(e.target.id);
@@ -43,7 +23,7 @@ class Synthesiser extends Component {
     var newOctave = Number(this.props.octave) + 1;
     
     return (
-      <div className="synthesiser-notes" onKeyDown={this.handleKeyDown} tabIndex="0">
+      <div className="synthesiser-notes" >
         <div id={"C" + newOctave} onMouseDown={this.handleOnDown} onMouseUp={this.handleOnLeave} onMouseOut={this.handleOnLeave}className="white-note">C{newOctave}
         </div>
         <div id={"B"+ this.props.octave} onMouseDown={this.handleOnDown} onMouseUp={this.handleOnLeave} onMouseOut={this.handleOnLeave} className="white-note">B{this.props.octave}
