@@ -4,6 +4,7 @@ import Sequencer from '../Component/Sequencer.jsx';
 import * as Tone from 'tone';
 import './SynthesiserContainer.css';
 import SoundControls from '../Component/SoundControls.jsx';
+import MIDIAccess from '../Component/MIDIAccess.jsx';
 
 class SynthesiserContainer extends Component {
   constructor(){
@@ -134,6 +135,21 @@ class SynthesiserContainer extends Component {
 
   handleSelect = (e) => this.setState({octave: e.target.value});
 
+  playMIDI = (value) => {
+    let method = value === 127 ? 'triggerAttack' : 'releaseAll';
+    this.state.synth1[method](['C4', 'E4', 'G4'])
+}
+  // This function seems to be what is starting the chain of events, it is called in the MIDIAccess file
+  onDeviceInput = ({input, value}) => {
+    // input will depend on MIDI key. 23 is what the dude had
+    if (input === 23) this.playMIDI(value);
+    else console.log('onDeviceInput!', input, value)
+  }
+
+  // componentDidMount() {
+  //   const midi = new MIDIAccess(this.onDeviceInput)
+  // }
+
   render() {
     this.state.synth1.connect(this.state.gainNode);
     this.state.synth1.connect(this.state.reverbNode);
@@ -160,6 +176,7 @@ class SynthesiserContainer extends Component {
             </div>
             <Synthesiser octave={this.state.octave} synth1={this.state.synth1}/>
             <Sequencer octave={this.state.octave} synth1={this.state.synth1}/>
+            <MIDIAccess onDeviceInput={this.onDeviceInput}/>
           </div>
       )
     }
