@@ -63,7 +63,7 @@ class Sequencer extends Component {
         this.checkForChecked();
     }
 
-    componentDidUpdate(prevState) {
+    componentDidUpdate(prevProps, prevState) {
         if (this.state.sequenceList !== prevState.sequenceList) {
             this.loadSequence();
         }
