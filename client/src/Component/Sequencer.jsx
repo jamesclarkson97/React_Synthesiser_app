@@ -37,7 +37,6 @@ class Sequencer extends Component {
 
     handleCheck = (e) => {
         const {id} = e.target
-        console.log(id)
         let newSequence = [...this.state.sequence]
         if (newSequence.includes(id)) {
             let index = newSequence.indexOf(id)
