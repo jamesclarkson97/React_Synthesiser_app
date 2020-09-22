@@ -141,12 +141,12 @@ class Sequencer extends Component {
             <>
             
             <div id="sequencer">
-            <h4 id="tempo-heading">{this.state.tempo} BPM</h4> 
+            <h4 id="tempo-heading"><span id="tempo-span">{this.state.tempo}</span> BPM</h4> 
             <div id="sequencer-controls">
-            <button onClick={this.play}>Play</button>
-            <button onClick={this.stop}>Stop</button>
-            <button onClick={this.submitSequence}>Save</button>
-            <select disabled={this.state.sequenceList ? null : true} defaultValue="select-sequence" onChange={this.sequenceSelect}>
+            <button className="btn" onClick={this.play}>Play</button>
+            <button className="btn" onClick={this.stop}>Stop</button>
+            <button className="btn" onClick={this.submitSequence}>Save</button>
+            <select id="sequence-selector" disabled={this.state.sequenceList ? null : true} defaultValue="select-sequence" onChange={this.sequenceSelect}>
                 <option disabled value="select-sequence">Select Sequence</option>
                 {this.state.sequenceList.map((sequence) => <option key={sequence._id} value={sequence.sequence}>{sequence.name}</option>)}
             </select>
