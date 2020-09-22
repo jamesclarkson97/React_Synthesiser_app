@@ -11,7 +11,9 @@ class SynthesiserContainer extends Component {
 
     this.state = {
       synth1: new Tone.PolySynth(Tone.Synth).toDestination(),
-      octave: '3'
+      octave: '3',
+      gain: 0,
+      gainNode: new Tone.Gain(0).toDestination()
     }
   }
 
@@ -24,6 +26,12 @@ class SynthesiserContainer extends Component {
   changeWaveForm = (waveformChoice) => {
     this.setState({synth1: this.state.synth1.set({oscillator: {type: waveformChoice}})})
   }
+
+  changeGain = (gain) => {
+    this.state.gainNode.gain.rampTo(parseFloat(gain), 0.1);
+    this.setState({gain: parseFloat(gain)});
+  }
+  
 
   handleKeyDown = (e) => {
     let upperOctave = Number(this.state.octave) + 1;
@@ -114,7 +122,7 @@ class SynthesiserContainer extends Component {
   handleSelect = (e) => this.setState({octave: e.target.value});
 
   render() {
-
+    this.state.synth1.connect(this.state.gainNode);
       return(
           <div className="synthesiser-container" onKeyDown={this.handleKeyDown} tabIndex="0">
             <div className="controls-container">
@@ -126,7 +134,7 @@ class SynthesiserContainer extends Component {
                 <option value="4">4</option>
                 <option value="5">5</option>
               </select>
-              <SoundControls synth1={this.state.synth1} changeWaveForm={this.changeWaveForm} changeSynth={this.changeSynth}/>
+              <SoundControls synth1={this.state.synth1} changeWaveForm={this.changeWaveForm} changeSynth={this.changeSynth} changeGain={this.changeGain} gain={this.state.gain}/>
             </div>
             <Synthesiser octave={this.state.octave} synth1={this.state.synth1}/>
             <Sequencer octave={this.state.octave} synth1={this.state.synth1}/>
