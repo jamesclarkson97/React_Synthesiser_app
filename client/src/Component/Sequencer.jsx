@@ -161,6 +161,8 @@ class Sequencer extends Component {
                 /> 
             </div>
             <div id="beats"><p>1 2 3 4 5 6 7 8</p></div>
+            <div id="note-container">
+            <div id="note-labels"><span>C B A# A G# G F# F E D# D C# C</span></div>
             <div id="Notes">
             <div id={"C" + newOctave} className="row">
                 <input id={"CU1"} className="1" onChange={this.handleCheck} type="checkbox"/>
@@ -292,7 +294,7 @@ class Sequencer extends Component {
                 <input id={"C7"} className="7" onChange={this.handleCheck} type="checkbox"/>
                 <input id={"C8"} className="8" onChange={this.handleCheck} type="checkbox"/>
             </div>
-
+            </div>
             </div>
             </div>
             </>
