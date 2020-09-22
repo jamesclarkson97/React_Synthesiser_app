@@ -7,13 +7,14 @@
   position: absolute;
   left: 25%;
   transform: translateX(-25%);
-  right: 27.5%;
-  transform: translateX(-27.5%);
+  right: 12.5%;
+  transform: translateX(-12.5%);
 }
 
 .controls-container {
   text-align: center;
-  padding: 0.75rem;
+  margin-right: 1rem;
+  padding: 1rem;
 }
 .controls-container > select {
   width: 2.5rem;
