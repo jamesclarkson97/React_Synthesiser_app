@@ -15,6 +15,10 @@
   text-align: center;
   margin-right: 1rem;
   padding: 1rem;
+  padding-top: 0.75rem;
+  background-color: rgba(102, 117, 131, 0.2);
+  border: 2px solid #111;
+  border-radius: 10px;
 }
 .controls-container > select {
   width: 2.5rem;

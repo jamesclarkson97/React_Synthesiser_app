@@ -56,8 +56,8 @@ class SoundControls extends Component {
     render() {
 
         return(
-            <div>
-                <h6>Synth</h6>
+            <div id="sound-controls">
+                <h6 className="sound-control-heading">Synth</h6>
                 <select defaultValue="Tone.Synth" id="synth-buttons" onChange={this.updateSynth}>
                     <option value="Tone.Synth">Synth</option>
                     <option value="Tone.AMSynth">AM Synth</option>
@@ -66,7 +66,7 @@ class SoundControls extends Component {
                     <option value="Tone.MetalSynth">Metal Synth</option>
                     <option value="Tone.PluckSynth">Pluck Synth</option>
                 </select>
-                <h6>Waveform</h6>
+                <h6 className="sound-control-heading">Waveform</h6>
                 <select id="waveform-select" defaultValue="default" onChange={this.updateWaveForm}>
                     <option disabled value="default">Default: {this.state.waveForm}</option>
                     <option value="triangle" >Triangle</option>
@@ -74,9 +74,9 @@ class SoundControls extends Component {
                     <option value="square">Square</option>
                     <option value="sawtooth">Sawtooth</option>
                 </select>
-                <h6>Gain</h6>
+                <h6 className="sound-control-heading">Gain</h6>
                 <input id="gain" type="range" min="0.0" max="20.0" step="0.1" value={this.props.gain} onChange={this.updateGain}></input>
-                <h6>Reverb</h6>
+                <h6 className="sound-control-heading">Reverb</h6>
                 <input id="reverb" type="range" min="0.0" max="20.0" step="0.1" value={this.props.reverb} onChange={this.updateReverb}></input>
                 
             </div>
