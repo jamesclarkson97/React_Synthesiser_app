@@ -67,6 +67,15 @@ class SoundControls extends Component {
 
         return(
             <div>
+                <h6>Synth</h6>
+                <select defaultValue="Tone.Synth" id="synth-buttons" onChange={this.updateSynth}>
+                    <option value="Tone.Synth">Synth</option>
+                    <option value="Tone.AMSynth">AM Synth</option>
+                    <option value="Tone.FMSynth">FM Synth</option>
+                    <option value="Tone.MembraneSynth">Membrane Synth</option>
+                    <option value="Tone.MetalSynth">Metal Synth</option>
+                    <option value="Tone.PluckSynth">Pluck Synth</option>
+                </select>
                 <h6>Waveform</h6>
                 <select id="waveform-select" defaultValue="default" onChange={this.updateWaveForm}>
                     <option disabled value="default">Default: {this.state.waveForm}</option>
@@ -79,14 +88,7 @@ class SoundControls extends Component {
                 <input id="gain" type="range" min="0.0" max="10.0" step="0.1" value={this.state.gain} onChange={this.gainChange}></input>
                 <h6>Distortion</h6>
                 <input id="distortion" type="range" min="0.0" max="10.0" step="0.1" value={this.state.distortion} onChange={this.distortionChange}></input>
-                <select defaultValue="Tone.Synth" id="synth-buttons" onChange={this.updateSynth}>
-                    <option value="Tone.Synth">Synth</option>
-                    <option value="Tone.AMSynth">AM Synth</option>
-                    <option value="Tone.FMSynth">FM Synth</option>
-                    <option value="Tone.MembraneSynth">Membrane Synth</option>
-                    <option value="Tone.MetalSynth">Metal Synth</option>
-                    <option value="Tone.PluckSynth">Pluck Synth</option>
-                </select>
+                
             </div>
         )
     }
