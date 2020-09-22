@@ -41,8 +41,7 @@ class Sequencer extends Component {
         let newSequence = [...this.state.sequence]
         if (newSequence.includes(id)) {
             let index = newSequence.indexOf(id)
-            let splicedSequence = newSequence.splice(index, 1)
-            console.log(splicedSequence)
+            newSequence.splice(index, 1)
             this.setState({sequence: newSequence});  
         } else {
             this.setState(prevState => ({
