@@ -19,6 +19,9 @@ class SoundControls extends Component {
         switch(e.target.value) {
             default:
                 break;
+            case "Tone.Synth":
+                this.props.changeSynth(Tone.Synth);
+                break;
             case "Tone.AMSynth":
                 this.props.changeSynth(Tone.AMSynth);
                 break;
@@ -61,6 +64,7 @@ class SoundControls extends Component {
                 <h6>Distortion</h6>
                 <input id="distortion" type="range" min="0.0" max="10.0" step="0.1" value={this.state.distortion} onChange={this.distortionChange}></input>
                 <div id="synth-buttons">
+                    <button onClick={this.updateSynth} value="Tone.Synth">Synth</button>
                     <button onClick={this.updateSynth} value="Tone.AMSynth">AM Synth</button>
                     <button onClick={this.updateSynth} value="Tone.FMSynth">FM Synth</button>
                     <button onClick={this.updateSynth} value="Tone.MembraneSynth">Membrane Synth</button>
