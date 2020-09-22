@@ -15,6 +15,10 @@ class SynthesiserContainer extends Component {
     }
   }
 
+  changeSynth = (synthChoice) => {
+    this.setState({synth1: new Tone.PolySynth(synthChoice).toDestination()})
+  }
+
   handleKeyDown = (e) => {
     let upperOctave = Number(this.state.octave) + 1;
     e = window.event;
@@ -116,7 +120,7 @@ class SynthesiserContainer extends Component {
                 <option value="4">4</option>
                 <option value="5">5</option>
               </select>
-              <SoundControls synth1={this.state.synth1}/>
+              <SoundControls synth1={this.state.synth1} changeSynth={this.changeSynth}/>
             </div>
             <Synthesiser octave={this.state.octave} synth1={this.state.synth1}/>
             <Sequencer octave={this.state.octave} synth1={this.state.synth1}/>
