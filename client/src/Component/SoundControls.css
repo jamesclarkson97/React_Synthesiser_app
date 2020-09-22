@@ -2,3 +2,14 @@
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
+
+#synth-buttons, #waveform-select {
+  background-color: coral;
+  box-shadow: inset 0px 2px 10px 0px rgba(0, 0, 0, 0.4);
+  outline: 2px #666 outset;
+}
+
+#synth-buttons:hover, #waveform-select:hover {
+  cursor: pointer;
+  box-shadow:  1px 1px 5px 2px rgba(0, 0, 0, 0.3);
+}
