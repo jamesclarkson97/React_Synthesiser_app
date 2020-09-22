@@ -9,7 +9,8 @@ class SoundControls extends Component {
         this.state = {
             gain: 0,
             distortion: 0,
-            synth: this.props.synth1
+            synth: this.props.synth1,
+            waveForm: this.props.synth1.get().oscillator.type
         }
         this.gainChange = this.gainChange.bind(this)
         this.distortionChange = this.distortionChange.bind(this)
@@ -22,6 +23,7 @@ class SoundControls extends Component {
     }
 
     updateSynth = (e) => {
+        document.getElementById('waveform-select').value = 'default';
         switch(e.target.value) {
             default:
                 break;
@@ -66,7 +68,8 @@ class SoundControls extends Component {
         return(
             <div>
                 <h6>Waveform</h6>
-                <select defaultValue="triangle" onChange={this.updateWaveForm}>
+                <select id="waveform-select" defaultValue="default" onChange={this.updateWaveForm}>
+                    <option disabled value="default">Default: {this.state.waveForm}</option>
                     <option value="triangle" >Triangle</option>
                     <option value="sine">Sine</option>
                     <option value="square">Square</option>
@@ -76,14 +79,14 @@ class SoundControls extends Component {
                 <input id="gain" type="range" min="0.0" max="10.0" step="0.1" value={this.state.gain} onChange={this.gainChange}></input>
                 <h6>Distortion</h6>
                 <input id="distortion" type="range" min="0.0" max="10.0" step="0.1" value={this.state.distortion} onChange={this.distortionChange}></input>
-                <div id="synth-buttons">
-                    <button onClick={this.updateSynth} value="Tone.Synth">Synth</button>
-                    <button onClick={this.updateSynth} value="Tone.AMSynth">AM Synth</button>
-                    <button onClick={this.updateSynth} value="Tone.FMSynth">FM Synth</button>
-                    <button onClick={this.updateSynth} value="Tone.MembraneSynth">Membrane Synth</button>
-                    <button onClick={this.updateSynth} value="Tone.MetalSynth">Metal Synth</button>
-                    <button onClick={this.updateSynth} value="Tone.PluckSynth">Pluck Synth</button>
-                </div>
+                <select defaultValue="Tone.Synth" id="synth-buttons" onChange={this.updateSynth}>
+                    <option value="Tone.Synth">Synth</option>
+                    <option value="Tone.AMSynth">AM Synth</option>
+                    <option value="Tone.FMSynth">FM Synth</option>
+                    <option value="Tone.MembraneSynth">Membrane Synth</option>
+                    <option value="Tone.MetalSynth">Metal Synth</option>
+                    <option value="Tone.PluckSynth">Pluck Synth</option>
+                </select>
             </div>
         )
     }
