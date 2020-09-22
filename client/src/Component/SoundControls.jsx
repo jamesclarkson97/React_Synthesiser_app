@@ -15,8 +15,12 @@ class SoundControls extends Component {
         this.distortionChange = this.distortionChange.bind(this)
     }
 
-    changeWaveForm = (e) => this.setState({synth: this.props.synth1.set({oscillator: {type: e.target.value}})})
     
+    
+    updateWaveForm = (e) => {
+        this.props.changeWaveForm(e.target.value)
+    }
+
     updateSynth = (e) => {
         switch(e.target.value) {
             default:
@@ -62,11 +66,11 @@ class SoundControls extends Component {
         return(
             <div>
                 <h6>Waveform</h6>
-                <select defaultValue="triangle">
-                    <option value="triangle" onChange={this.changeWaveForm}>Triangle</option>
-                    <option value="sine" onChange={this.changeWaveForm}>Sine</option>
-                    <option value="square" onChange={this.changeWaveForm}>Square</option>
-                    <option value="sawtooth" onChange={this.changeWaveForm}>Sawtooth</option>
+                <select defaultValue="triangle" onChange={this.updateWaveForm}>
+                    <option value="triangle" >Triangle</option>
+                    <option value="sine">Sine</option>
+                    <option value="square">Square</option>
+                    <option value="sawtooth">Sawtooth</option>
                 </select>
                 <h6>Gain</h6>
                 <input id="gain" type="range" min="0.0" max="10.0" step="0.1" value={this.state.gain} onChange={this.gainChange}></input>
