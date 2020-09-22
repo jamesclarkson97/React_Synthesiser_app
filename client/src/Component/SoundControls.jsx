@@ -82,7 +82,7 @@ class SoundControls extends Component {
                     <option value="sawtooth">Sawtooth</option>
                 </select>
                 <h6>Gain</h6>
-                <input id="gain" type="range" min="0.0" max="10.0" step="0.1" value={this.props.gain} onChange={this.updateGain}></input>
+                <input id="gain" type="range" min="0.0" max="20.0" step="0.1" value={this.props.gain} onChange={this.updateGain}></input>
                 <h6>Distortion</h6>
                 <input id="distortion" type="range" min="0.0" max="10.0" step="0.1" value={this.state.distortion} onChange={this.distortionChange}></input>
                 
