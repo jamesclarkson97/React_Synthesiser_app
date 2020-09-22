@@ -18,8 +18,8 @@ class Sequencer extends Component {
     }
 
     loadSequence = () => {
-        let sequenceList = SequencerService.getSequences()
-            .then(sequences => sequenceList = sequences)
+            SequencerService.getSequences()
+            .then(sequences => sequences)
             .then(sequenceList => {
                 this.setState({sequenceList})
             })
