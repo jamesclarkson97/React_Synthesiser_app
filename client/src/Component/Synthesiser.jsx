@@ -11,6 +11,7 @@ class Synthesiser extends Component {
     }
 
     handleKeyDown = (e) => {
+      let upperOctave = this.props.octave
       e = window.event;
       let k = e.keyCode;
 	    switch(k){
@@ -18,6 +19,46 @@ class Synthesiser extends Component {
           
         break;
         case 74:
+          Tone.start()
+          this.props.synth1.triggerAttackRelease(`C${upperOctave}`, "8n")
+          break;
+        case 74:
+          Tone.start()
+          this.props.synth1.triggerAttackRelease("B4", "8n")
+          break;
+          case 85:
+          Tone.start()
+          this.props.synth1.triggerAttackRelease("A#4", "8n")
+          break;
+          case 72:
+          Tone.start()
+          this.props.synth1.triggerAttackRelease("A4", "8n")
+          break;
+          case 74:
+          Tone.start()
+          this.props.synth1.triggerAttackRelease("B4", "8n")
+          break;
+          case 85:
+          Tone.start()
+          this.props.synth1.triggerAttackRelease("A#4", "8n")
+          break;
+          case 72:
+          Tone.start()
+          this.props.synth1.triggerAttackRelease("A4", "8n")
+          break;
+          case 74:
+          Tone.start()
+          this.props.synth1.triggerAttackRelease("B4", "8n")
+          break;
+          case 85:
+          Tone.start()
+          this.props.synth1.triggerAttackRelease("A#4", "8n")
+          break;
+          case 72:
+          Tone.start()
+          this.props.synth1.triggerAttackRelease("A4", "8n")
+          break;
+          case 74:
           Tone.start()
           this.props.synth1.triggerAttackRelease("B4", "8n")
           break;
