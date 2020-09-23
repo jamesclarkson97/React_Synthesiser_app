@@ -9,6 +9,18 @@
   align-items: center;
 }
 
+#sequence-selector {
+  outline: 2px #666 outset;
+  margin: 10px;
+  background-color: rgb(157, 233, 44);
+}
+
+#sequence-selector:hover {
+  opacity: 0.9;
+  box-shadow:  1px 1px 5px 2px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
+
 
 #tempo, #tempo-heading {
   display: inline-block;
@@ -16,15 +28,36 @@
   height: 0.25rem;
 }
 
-button {
-  display: inline-block;
-  width: 50px;
-  height: 25px;
-  margin: 10px;
+#tempo:focus {
+  outline: none;
 }
+
+#tempo::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 14px;
+  cursor: pointer;
+  background: #393c41;
+  border: 2px solid #111;
+  border-radius: 14px;
+}
+
+#tempo::-webkit-slider-thumb {
+  height: 15px;
+  width: 40px;
+  border-radius: 12px;
+  background: #61dafb;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -3px;
+}
+
+#tempo:hover {
+  cursor: pointer;
+}
+
+
 input {
   margin: 3px 5px;
-
 }
 
 input[type='checkbox'] {
@@ -38,4 +71,49 @@ input[type='checkbox'] {
 input[type='checkbox']:checked {
   background-color: #61dafb;
   transition: all 0.1s ease;
+}
+input[type='checkbox']:hover {
+  cursor: pointer;
+}
+
+#tempo-span {
+  color: #61dafb;
+}
+
+#beats {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  word-spacing: 0.2rem;
+  height: fit-content;
+}
+
+#beats > p {
+  margin: 0;
+  margin-bottom: 2px;
+}
+
+#note-container {
+  display: grid;
+  grid-template-columns: 1fr 10fr;
+  width: 50%;
+  transform: translateX(45.5%);
+}
+
+
+#note-labels {
+  display: inline-block;
+  width: fit-content;
+  height: fit-content;
+  align-items: center;
+}
+#note-labels > span {
+  display: inline-block;
+  width: 1rem;
+  height: 100%;
+  vertical-align: middle;
+  text-align: left;
+  line-height: 1.375rem;
+  padding-bottom: 5px;
 }

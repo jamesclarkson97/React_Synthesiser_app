@@ -156,7 +156,7 @@ class SynthesiserContainer extends Component {
       return(
           <div className="synthesiser-container" onKeyDown={this.handleKeyDown} tabIndex="0">
             <div className="controls-container">
-              <h6>Octave</h6>
+              <h6 className="sound-control-heading">Octave</h6>
               <select id="octave-select" defaultValue="3" onChange={this.handleSelect} className="octave-select">
                 <option value="1">1</option>
                 <option value="2">2</option>
