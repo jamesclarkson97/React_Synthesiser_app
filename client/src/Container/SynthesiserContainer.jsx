@@ -26,7 +26,7 @@ class SynthesiserContainer extends Component {
   }
 
   changeWaveForm = (waveformChoice) => {
-    this.setState({synth1: this.state.synth1.set({oscillator: {type: waveformChoice}})})
+  this.setState({synth1: this.state.synth1.set({oscillator: {type: waveformChoice}})})
   }
 
   changeGain = (gain) => {

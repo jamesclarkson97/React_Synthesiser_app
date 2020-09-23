@@ -11,7 +11,7 @@ const Instructions = () => {
             </div>
 
             <div id="instructions" className="overlay">
-                <a className="close" href="#">&times;</a>
+                <a className="close" href="/#">&times;</a>
                 <h4>Welcome to React Synth.</h4>
                 <div className="content">
                     <p>Use the control panel on the left to alter the sound of all synths in the app.</p>
