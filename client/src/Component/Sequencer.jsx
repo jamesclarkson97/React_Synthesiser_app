@@ -115,6 +115,7 @@ class Sequencer extends Component {
             document.getElementById(id).checked = true
             );
     }
+    
     uncheckAll = () => {
         let sequence = [...this.state.sequence]
         sequence.map((id) => 
@@ -122,18 +123,10 @@ class Sequencer extends Component {
             );
     }
 
-
     sequenceSelect = (e) => {
         this.uncheckAll();
         this.setState({sequence: e.target.value.split(',')})
     }
-
-
-
-
-
-
-
 
     render() {
         var newOctave = Number(this.props.octave) + 1;
