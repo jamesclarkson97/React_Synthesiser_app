@@ -18,13 +18,12 @@ class SynthesiserContainer extends Component {
       reverb: 0,
       reverbNode: new Tone.Reverb().toDestination()
     }
+    Tone.Master.volume.value = -5;
   }
 
   changeSynth = (synthChoice) => {
     this.setState({synth1: new Tone.PolySynth(synthChoice).toDestination()})
   }
-
-  
 
   changeWaveForm = (waveformChoice) => {
     this.setState({synth1: this.state.synth1.set({oscillator: {type: waveformChoice}})})
@@ -46,7 +45,6 @@ class SynthesiserContainer extends Component {
     this.setState({reverb: parseFloat(reverb)})
   }
   
-
   handleKeyDown = (e) => {
     let upperOctave = Number(this.state.octave) + 1;
     e = window.event;
@@ -150,7 +148,7 @@ class SynthesiserContainer extends Component {
                 <option value="5">5</option>
               </select>
               <SoundControls 
-              synth1={this.state.synth1} 
+              synth1={this.state.synth1}
               changeWaveForm={this.changeWaveForm} 
               changeSynth={this.changeSynth} 
               changeGain={this.changeGain} 

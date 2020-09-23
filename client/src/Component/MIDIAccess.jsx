@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import * as Tone from 'tone';
 
 class MIDIAccess extends Component {
 

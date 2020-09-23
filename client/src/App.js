@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import reactLogo from './images/react-logo.png';
 import SynthesiserContainer from './Container/SynthesiserContainer';
+import Instructions from './Component/Instructions.jsx'
 
 function App() {
   
@@ -12,6 +13,7 @@ function App() {
         <h1 id="main-heading">Synth.</h1>
       </div>
       <SynthesiserContainer/>
+      <Instructions/>      
     </div>
   );
 }

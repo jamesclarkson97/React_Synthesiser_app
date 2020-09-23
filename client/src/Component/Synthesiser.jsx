@@ -4,19 +4,17 @@ import './Synthesiser.css';
 
 class Synthesiser extends Component {
     
-    handleOnDown = (e) => {
-      e.stopPropagation();
-      this.props.synth1.triggerAttack(e.target.id , Tone.now());
-      Tone.start();
-    }
-
+  handleOnDown = (e) => {
+    e.stopPropagation();
+    this.props.synth1.triggerAttack(e.target.id , Tone.now());
+    Tone.start();
+  }
     
-    
-    handleOnLeave = (e) => {
-      this.props.synth1.triggerRelease(e.target.id);
-    }
+  handleOnLeave = (e) => {
+    this.props.synth1.triggerRelease(e.target.id);
+  }
 
-    stopPropagation = (e) => e.stopPropagation();
+  stopPropagation = (e) => e.stopPropagation();
 
 
   render() {
@@ -46,10 +44,7 @@ class Synthesiser extends Component {
         <div id={"C" + this.props.octave} onMouseDown={this.handleOnDown} onMouseUp={this.handleOnLeave} onMouseOut={this.handleOnLeave}className="white-note">C{this.props.octave}
         </div>
         
-        
-      </div>
-      
-      
+      </div>      
     );
   }
 }
