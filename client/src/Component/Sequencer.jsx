@@ -115,7 +115,7 @@ class Sequencer extends Component {
             document.getElementById(id).checked = true
             );
     }
-    
+
     uncheckAll = () => {
         let sequence = [...this.state.sequence]
         sequence.map((id) => 

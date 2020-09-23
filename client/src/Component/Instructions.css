@@ -1,6 +1,79 @@
+.box {
+  width: 1rem;
+  height: 1.15rem;
+  padding: 5px;
+  padding-top: 0px;
+  border-radius: 50%;
+  border: 1px solid rgb(157, 233, 44);
+  background: transparent;
+  position: absolute;
+  top: 12.5%;
+  transform: translateY(25%);
+  left: 21.25%;
+  transform: translateX(-25%);
+  display: inline-block;
+}
+
+.instructions-btn {
+  text-decoration: none;
+  color: rgb(157, 233, 44);
+}
+.box:hover {
+  cursor: pointer;
+  background: rgba(20, 20, 20, 0.2);
+  box-shadow:  0px 1px 5px 0px rgba(0, 0, 0, 0.3);
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  transition: opacity 500ms;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.overlay:target {
+  visibility: visible;
+  opacity: 1;
+}
+
 #instructions {
   position: absolute;
+  top: 0;
   bottom: 0;
-  transform: translateY(50vh);
-  color: rgba(0,212,255,0.75)
+  color: rgba(0,212,255,0.75);
+  transition: all 1s ease-in-out;
+}
+
+#instructions .close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  transition: all 200ms;
+  font-size: 25px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #333;
+}
+
+#instructions .close:hover {
+ color: rgba(0,212,255,1);
+}
+
+#instructions .content {
+  max-height: 50%;
+  overflow: auto;
+  margin: 15vh auto;
+}
+
+.content {
+  max-width: 75vw;
+}
+
+#instructions > h4 {
+  margin-top: 12vh;
 }
