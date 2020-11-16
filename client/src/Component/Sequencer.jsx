@@ -95,7 +95,9 @@ class Sequencer extends Component {
                     notes.push(note)
                 }  
             }
+            
             this.props.synth1.triggerAttackRelease(notes,"8n", time)
+            
         }
         let newIndex = this.state.index + 1
         this.setState({index: newIndex});      
