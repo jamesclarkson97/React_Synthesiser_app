@@ -36,9 +36,17 @@ class MIDIAccess extends Component {
         this.props.onDeviceInput(message);
     }
 
+    componentDidMount() {
+        this.start().catch(console.error);
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        if (this.state !== prevState) {
+            this.start().catch(console.error);
+        }
+    }
 
     render() {
-        this.start().catch(console.error);
         return(
             <>
             </>

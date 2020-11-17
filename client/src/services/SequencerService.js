@@ -12,5 +12,10 @@ export default {
             headers: {'Content-Type': 'application/json'}
         })
         .then(res => res.json())
+    },
+    deleteSequence(id) {
+        return fetch(baseURL + id, {
+            method: 'DELETE'
+        })
     }
 }

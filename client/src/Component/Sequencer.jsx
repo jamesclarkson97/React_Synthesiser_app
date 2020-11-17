@@ -39,6 +39,17 @@ class Sequencer extends Component {
         }
     }
 
+    deleteSequence = (e) => {
+        e.preventDefault()
+        let sequenceToDelete = '';
+        for (let s of this.state.sequenceList) {
+            if (s.id === this.state.sequence.id) sequenceToDelete = s.id
+        }
+        console.log(sequenceToDelete)
+        const confirmMsg = prompt('Are you sure you want to delete the currently selected sequence?');
+        if (confirmMsg === 'Yes' || 'yes') SequencerService.deleteSequence(sequenceToDelete);
+    }
+
     handleCheck = (e) => {
         const {id} = e.target
         let newSequence = [...this.state.sequence]
@@ -149,6 +160,7 @@ class Sequencer extends Component {
                 <option disabled value="select-sequence">Select Sequence</option>
                 {this.state.sequenceList.map((sequence) => <option key={sequence._id} value={sequence.sequence}>{sequence.name}</option>)}
             </select>
+            <button className="btn" onClick={this.deleteSequence}>Delete</button>
             <input
                 type="range"
                 name="tempo" 
