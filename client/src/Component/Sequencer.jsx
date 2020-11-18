@@ -41,13 +41,16 @@ class Sequencer extends Component {
 
     deleteSequence = (e) => {
         e.preventDefault()
-        let sequenceToDelete = '';
-        for (let s of this.state.sequenceList) {
-            if (s.id === this.state.sequence.id) sequenceToDelete = s.id
+        let found = false;
+        const sequenceToDelete = prompt('Enter name of sequence.');
+        for (let sequence of this.state.sequenceList) {
+            if (sequence.name === sequenceToDelete) {
+                found = true;
+                SequencerService.deleteSequence(sequence._id);
+                break;
+            }
         }
-        console.log(sequenceToDelete)
-        const confirmMsg = prompt('Are you sure you want to delete the currently selected sequence?');
-        if (confirmMsg === 'Yes' || 'yes') SequencerService.deleteSequence(sequenceToDelete);
+        found ? alert('Deleted.') : alert('Not found.');
     }
 
     handleCheck = (e) => {

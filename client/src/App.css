@@ -11,6 +11,7 @@
   align-items: center;
   position: relative;
 }
+
 body {
   background-color: #2d313a;
 }
@@ -21,10 +22,8 @@ body {
   align-items: center;
   position: absolute;
   top: 0;
-  left: 25%;
-  transform: translateX(-25%);
-  right: 15%;
-  transform: translateX(-15%);
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 #react-logo {

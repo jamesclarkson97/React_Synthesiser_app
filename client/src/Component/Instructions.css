@@ -8,14 +8,15 @@
   background: transparent;
   position: absolute;
   top: 12.5%;
-  transform: translateY(25%);
-  left: 21.25%;
-  transform: translateX(-25%);
+  transform: translateY(-25%);
+  left: 28.5%;
+  transform: translateX(-28.5%);
   display: inline-block;
 }
 
 .instructions-btn {
   text-decoration: none;
+  width: 100%;
   color: rgb(157, 233, 44);
 }
 .box:hover {
@@ -30,10 +31,11 @@
   bottom: 0;
   left: 0;
   right: 0;
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(0, 0, 0, 0.85);
   transition: opacity 500ms;
   visibility: hidden;
   opacity: 0;
+  z-index: 100;
 }
 
 .overlay:target {
@@ -71,7 +73,7 @@
 }
 
 .content {
-  max-width: 75vw;
+  width: 50%;
 }
 
 #instructions > h4 {

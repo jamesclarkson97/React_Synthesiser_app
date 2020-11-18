@@ -7,13 +7,13 @@ import Instructions from './Component/Instructions.jsx'
 function App() {
   
   return (
-    <div className="App">
+    <div className="App"> 
+      <Instructions/> 
       <div id="main-header">
         <img src={reactLogo} alt="react-logo" id="react-logo"/>
         <h1 id="main-heading">Synth.</h1>
       </div>
-      <SynthesiserContainer/>
-      <Instructions/>      
+      <SynthesiserContainer/>    
     </div>
   );
 }
