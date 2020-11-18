@@ -28,15 +28,15 @@ class Sequencer extends Component {
     submitSequence = (e)  => {
         e.preventDefault()
         const name = prompt('Enter sequence name:');
-        if (name !== '') {
+        if (name === null) return;
+        if (name !== '' && !null) {
             const sequence = this.state.sequence;
             SequencerService.postSequence({
               name: name,
               sequence: sequence
             })
-        } else {
-            alert('You must enter a name!');
         }
+        else alert('You must enter a name!');
     }
 
     deleteSequence = (e) => {
