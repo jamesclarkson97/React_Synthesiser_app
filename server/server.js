@@ -10,7 +10,7 @@ app.use(cors());
 app.use(parser.json());
 
 // Set up database connection and routers
-MongoClient.connect("mongodb://localhost:27017")
+MongoClient.connect("mongodb://localhost:27017", { useUnifiedTopology: true })
   .then(client => {
     const db = client.db("step_sequencer");
     const sequencesCollection = db.collection("sequences");

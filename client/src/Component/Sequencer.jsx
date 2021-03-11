@@ -28,11 +28,29 @@ class Sequencer extends Component {
     submitSequence = (e)  => {
         e.preventDefault()
         const name = prompt('Enter sequence name:');
-        const sequence = this.state.sequence;
-        SequencerService.postSequence({
-          name: name,
-          sequence: sequence
-        })
+        if (name === null) return;
+        if (name !== '' && !null) {
+            const sequence = this.state.sequence;
+            SequencerService.postSequence({
+              name: name,
+              sequence: sequence
+            })
+        }
+        else alert('You must enter a name!');
+    }
+
+    deleteSequence = (e) => {
+        e.preventDefault()
+        let found = false;
+        const sequenceToDelete = prompt('Enter name of sequence.');
+        for (let sequence of this.state.sequenceList) {
+            if (sequence.name === sequenceToDelete) {
+                found = true;
+                SequencerService.deleteSequence(sequence._id);
+                break;
+            }
+        }
+        found ? alert('Deleted.') : alert('Not found.');
     }
 
     handleCheck = (e) => {
@@ -91,7 +109,9 @@ class Sequencer extends Component {
                     notes.push(note)
                 }  
             }
+            
             this.props.synth1.triggerAttackRelease(notes,"8n", time)
+            
         }
         let newIndex = this.state.index + 1
         this.setState({index: newIndex});      
@@ -143,6 +163,7 @@ class Sequencer extends Component {
                 <option disabled value="select-sequence">Select Sequence</option>
                 {this.state.sequenceList.map((sequence) => <option key={sequence._id} value={sequence.sequence}>{sequence.name}</option>)}
             </select>
+            <button className="btn" onClick={this.deleteSequence}>Delete</button>
             <input
                 type="range"
                 name="tempo" 
