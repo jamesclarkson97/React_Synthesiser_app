@@ -8,12 +8,13 @@ function App() {
   
   return (
     <div className="App"> 
-      <Instructions/> 
+      
       <div id="main-header">
         <img src={reactLogo} alt="react-logo" id="react-logo"/>
         <h1 id="main-heading">Synth.</h1>
       </div>
-      <SynthesiserContainer/>    
+      <SynthesiserContainer/>   
+      <Instructions/> 
     </div>
   );
 }
